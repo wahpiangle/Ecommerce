@@ -5,6 +5,7 @@ import Title from './components/Title';
 import { useForm } from 'react-hook-form'
 import Input from '../components/Input';
 import Button from './components/Button';
+import GoogleSocialButton from './components/GoogleSocialButton';
 
 const Signup = () => {
   const [formVariant, setFormVariant] = useState('REGISTER');
@@ -22,24 +23,34 @@ const Signup = () => {
     return;
   }
 
-  const toggleVaraint = () =>{
-    if(formVariant === 'LOGIN'){
+  const toggleVaraint = () => {
+    if (formVariant === 'LOGIN') {
       setFormVariant('REGISTER');
-    }else{
+    } else {
       setFormVariant('LOGIN');
     }
   }
 
   return (
-    <div className='bg-primary min-h-screen text-primaryText grid md:grid-cols-2'>
-      <div className='px-16 py-8'>
+  <div className='bg-primary min-h-screen'>
+    <div className='absolute ml-2 mt-2'>
+      <Image
+        src='/assets/logo-updated.png'
+        width={200}
+        height={60}
+        alt='propdash'
+        key='propdash'
+      />
+    </div>
+    <div className='text-primaryText grid md:grid-cols-2'>
+      <div className='px-16 pt-16'>
         {formVariant === 'REGISTER' && (
           <Title text={'Create an Account'} subtitle={'Hi there! Create an account to view the dashboard.'} />
         )}
         {formVariant === 'LOGIN' && (
           <Title text={'Login'} subtitle={'Welcome back! Please enter your details.'} />
         )}
-        <div className='my-8'>
+        <div className='my-6'>
           <form onSubmit={handleSubmit(onSubmit)}>
             {formVariant === 'REGISTER' && (
               <Input label='Name' id='name' type='text' register={register} disabled={isLoading} placeholder="Enter your name" />
@@ -52,6 +63,12 @@ const Signup = () => {
               </Button>
             </div>
           </form>
+          <div className="mt-4 justify-center flex">
+            <GoogleSocialButton
+              icon="/assets/google.png"
+              onClick={() => { }}
+            />
+          </div>
           <div className='flex mt-2 text-secondaryText justify-center gap-1'>
             <div>
               {formVariant === 'LOGIN' ? "Don't have an account?" : "Already have an account?"}
@@ -62,7 +79,7 @@ const Signup = () => {
           </div>
         </div>
       </div>
-      <div className='justify-center relative md:flex hidden'>
+      <div className='justify-center relative md:flex hidden max-h-full'>
         <Image
           className='object-cover'
           src='/assets/signup-building.jpg'
@@ -71,6 +88,7 @@ const Signup = () => {
         />
       </div>
     </div>
+  </div>
   )
 }
 
