@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form'
 import Input from '../components/Input';
 import Button from './components/Button';
 import GoogleSocialButton from './components/GoogleSocialButton';
+import Link from 'next/link';
 
 const Signup = () => {
   const [formVariant, setFormVariant] = useState('REGISTER');
@@ -33,7 +34,7 @@ const Signup = () => {
 
   return (
   <div className='bg-primary min-h-screen'>
-    <div className='absolute ml-2 mt-2'>
+    <Link className='absolute ml-2 mt-2' href='/'>
       <Image
         src='/assets/logo-updated.png'
         width={200}
@@ -41,7 +42,7 @@ const Signup = () => {
         alt='propdash'
         key='propdash'
       />
-    </div>
+    </Link>
     <div className='text-primaryText grid md:grid-cols-2'>
       <div className='px-16 pt-16'>
         {formVariant === 'REGISTER' && (
