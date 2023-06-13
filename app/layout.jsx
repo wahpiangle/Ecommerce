@@ -1,6 +1,6 @@
-import { Toaster } from 'react-hot-toast'
 import AuthContext from './context/AuthContext'
 import './globals.css'
+import ToasterContext from './context/ToasterContext'
 
 export const metadata = {
   title: 'Create Next App',
@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <AuthContext>
-          <Toaster/>
+          <ToasterContext />
           {children}
         </AuthContext>
       </body>

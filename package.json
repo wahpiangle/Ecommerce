@@ -1,5 +1,5 @@
 {
-  "name": "ecommerce",
+  "name": "real-estate",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -16,8 +16,8 @@
     "bcrypt": "^5.1.0",
     "clsx": "^1.2.1",
     "eslint": "8.42.0",
-    "eslint-config-next": "13.4.4",
-    "next": "13.4.4",
+    "eslint-config-next": "13.4.5",
+    "next": "13.4.5",
     "next-auth": "^4.22.1",
     "postcss": "8.4.24",
     "prisma": "^4.15.0",

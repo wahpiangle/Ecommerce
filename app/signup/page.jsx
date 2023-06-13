@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Title from './components/Title';
 import { useForm } from 'react-hook-form'
 import Input from '../components/Input';
@@ -11,11 +11,20 @@ import { toast } from 'react-hot-toast';
 import { useSession } from 'next-auth/react';
 import axios from 'axios';
 import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/navigation'
 
 const Signup = () => {
   const [formVariant, setFormVariant] = useState('REGISTER');
   const [isLoading, setIsLoading] = useState(false);
+
   const session = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (session?.status === 'authenticated') {
+      router.push('/dashboard')
+    }
+  }, [session?.status])
 
   const { register, handleSubmit, formState: { errors } } = useForm({
     defaultValues: {
@@ -32,9 +41,10 @@ const Signup = () => {
         .then(() => signIn('credentials', data))
         .then(() => toast.success('Registered successfully!'))
         .catch((error) => {
-          if(error){
-           toast.error('Something went wrong!') //create a toast for error
-          }}
+          if (error) {
+            toast.error('Something went wrong!') //create a toast for error
+          }
+        }
         )
         .finally(() => setIsLoading(false));
     }
@@ -64,18 +74,18 @@ const Signup = () => {
     }
   }
 
-  const socialAction = (action) =>{
+  const socialAction = (action) => {
     setIsLoading(true);
     signIn(action, { redirect: false })
-    .then((callback) => {
-      if(callback?.error){
-        toast.error('Something went wrong!');
-      }
-      if(callback?.ok && !callback?.error){
-        toast.success('Logged in successfully!');
-      }
-    })
-    .finally(() => setIsLoading(false));
+      .then((callback) => {
+        if (callback?.error) {
+          toast.error('Something went wrong!');
+        }
+        if (callback?.ok && !callback?.error) {
+          toast.success('Logged in successfully!');
+        }
+      })
+      .finally(() => setIsLoading(false));
   }
 
   return (
@@ -113,7 +123,7 @@ const Signup = () => {
             <div className="mt-4 justify-center flex">
               <GoogleSocialButton
                 icon="/assets/google.png"
-                onClick={() => {socialAction('google')}}
+                onClick={() => { socialAction('google') }}
               />
             </div>
             <div className='flex mt-2 text-secondaryText justify-center gap-1'>
@@ -126,7 +136,7 @@ const Signup = () => {
             </div>
           </div>
         </div>
-        <div className='justify-center relative md:flex hidden max-h-screen'>
+        <div className='justify-center relative md:flex hidden min-h-full'>
           <Image
             className='object-cover'
             src='/assets/signup-building.jpg'
