@@ -10,8 +10,21 @@ export async function POST(request){
         if( !email || !name || !password){
             return new NextResponse('Missing info', {status: 400});
         }
+        if(password.length < 8){
+            return new NextResponse('Password too short', {status: 400});
+        }
 
         const hashedPassword = await bcrypt.hash(password, 10);
+
+        const existingUser = await prisma.user.findUnique({
+            where: {
+                email
+            }
+        })
+
+        if(existingUser){
+            return new NextResponse('User already exists', {status: 409});
+        }
 
         const user = await prisma.user.create({
             data:{
@@ -22,7 +35,7 @@ export async function POST(request){
         })
 
         //new keyword is not required here as .json() is used
-        return NextResponse.json(user); //return user data in form of json
+        return new NextResponse(JSON.stringify(user), {status: 201});
 
     }catch(error){
         console.log(error, 'Registration error');

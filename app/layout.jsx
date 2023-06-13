@@ -1,3 +1,4 @@
+import { Toaster } from 'react-hot-toast'
 import AuthContext from './context/AuthContext'
 import './globals.css'
 
@@ -10,9 +11,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        {/* <AuthContext> */}
+        <AuthContext>
+          <Toaster/>
           {children}
-        {/* </AuthContext> */}
+        </AuthContext>
       </body>
     </html>
   )
