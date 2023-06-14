@@ -1,10 +1,13 @@
 import React from 'react'
 import Navbar from './components/Navbar'
+import getCurrentUser from '@/app/actions/getCurrentUser'
 
-const DashboardLayout = ({ children }) => {
+const DashboardLayout = async({ children }) => {
+  const currentUser = await getCurrentUser();
+
   return (
     <div>
-        <Navbar/>
+        <Navbar currentUser={currentUser}/>
         {children}
     </div>
   )

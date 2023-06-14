@@ -1,20 +1,19 @@
+'use client'
 import Image from 'next/image'
 import React from 'react'
-import Link from 'next/link'
-const User = () => {
+
+const User = ({ currentUser, handleUserModal }) => {
     return (
-        <div className='flex gap-3'>
-            <Link href='/dashboard/profile' className="flex items-center">
+        <div className='flex hover:opacity-75 cursor-pointer' onClick={handleUserModal} >
+            <div className="flex items-center gap-3">
                 <Image
-                    src='/assets/placeholder.png'
+                    src={currentUser?.image || '/assets/placeholder.png'}
                     width={40}
                     height={40}
                     className='rounded-full'
+                    alt='user_image'
                 />
-            </Link>
-            <div className='flex flex-col text-sm'>
-                <h1 className='text-primaryText'>User's name</h1>
-                <p className='text-secondaryText'>Company Manager</p>
+                <h1 className='text-primaryText flex items-center'>{currentUser?.name}</h1>
             </div>
         </div>
     )
