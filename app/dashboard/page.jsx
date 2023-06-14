@@ -1,13 +1,9 @@
-'use client'
-import { signOut, useSession } from 'next-auth/react'
-import React, { useEffect } from 'react'
+import React from 'react'
 
-const dashboard = () => {
-    const session = useSession();
-
-    return (
-    <div>dashboard</div>
+const Dashboard = () => {
+  return (
+    <div>asdfasd</div>
   )
 }
 
-export default dashboard
+export default Dashboard
