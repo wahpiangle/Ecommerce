@@ -14,6 +14,9 @@ module.exports = {
         blueText: '#475BE8',
       }
     },
+    fontFamily:{
+      display: ["Merriweather", "serif"],
+    }
   },
   plugins: [],
 }
