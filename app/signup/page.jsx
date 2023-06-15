@@ -22,7 +22,7 @@ const Signup = () => {
 
   useEffect(() => {
     if (session?.status === 'authenticated') {
-      router.push('/dashboard')
+      router.push('/')
     }
   }, [session?.status])
 
