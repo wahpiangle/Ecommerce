@@ -2,8 +2,8 @@ import React from 'react'
 import getCurrentUser from '../actions/getCurrentUser'
 import Navbar from './components/Navbar';
 
-const MainLayout = ({children}) => {
-    const currentUser = getCurrentUser();
+const  MainLayout = async({children}) => {
+    const currentUser = await getCurrentUser();
   return (
     <div className='bg-primary'>
         <Navbar currentUser={currentUser}/>

@@ -28,7 +28,7 @@ const Navbar = ({ currentUser }) => {
                 <Link href='/rent' className='cursor-pointer hover:opacity-75'>Rent</Link>
                 <Link href='/dashboard' className='cursor-pointer flex items-center gap-2 bg-blueText py-2 px-3 hover:opacity-75 rounded-lg z-10'>
                     <FaHouseUser />
-                    <h1>Seller Dashboard</h1>
+                    <h1 className='whitespace-nowrap'>Seller Dashboard</h1>
                 </Link>
             </div>
             <User currentUser={currentUser} handleUserModal={handleUserModal} />
