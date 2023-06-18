@@ -6,13 +6,17 @@ import User from '../../components/User'
 import { BiLogOut } from 'react-icons/bi'
 import { signOut } from 'next-auth/react'
 import { FaHouseUser } from 'react-icons/fa'
+import { AiOutlineMenu } from 'react-icons/ai'
 
 const Navbar = ({ currentUser }) => {
     const [userModal, setUserModal] = useState(false);
+    const [ navModal, setNavModal ] = useState(false);
 
     const handleUserModal = () => {
         setUserModal(!userModal);
     }
+
+
 
     return (
         <nav className='flex bg-primary w-full py-4 px-6 items-center justify-between'>
@@ -23,7 +27,7 @@ const Navbar = ({ currentUser }) => {
                     alt="logo"
                 />
             </Link>
-            <div className='flex text-primaryText text-lg gap-8 items-center flex-1 justify-center'>
+            <div className='hidden text-primaryText text-lg gap-8 items-center flex-1 justify-center lg:flex'>
                 <Link href='/purchase' className='cursor-pointer hover:opacity-75'>Purchase</Link>
                 <Link href='/rent' className='cursor-pointer hover:opacity-75'>Rent</Link>
                 <Link href='/dashboard' className='cursor-pointer flex items-center gap-2 bg-blueText py-2 px-3 hover:opacity-75 rounded-lg z-10'>
@@ -31,6 +35,21 @@ const Navbar = ({ currentUser }) => {
                     <h1 className='whitespace-nowrap'>Seller Dashboard</h1>
                 </Link>
             </div>
+            <div className='lg:hidden flex flex-1 justify-end' onClick={()=>setNavModal(prevState => !prevState)}>
+                <AiOutlineMenu className='text-3xl cursor-pointer text-primaryText items-end' />
+            </div>
+            {navModal && (
+                <div className='absolute right-0 top-16 mr-2 bg-primary brightness-150 text-primaryText rounded-lg shadow-lg p-4'>
+                    <div className='flex flex-col justify-center items-center gap-3'>
+                        <Link href='/purchase' className='cursor-pointer hover:opacity-75'>Purchase</Link>
+                        <Link href='/rent' className='cursor-pointer hover:opacity-75'>Rent</Link>
+                        <Link href='/dashboard' className='cursor-pointer flex items-center gap-2 bg-blueText py-2 px-3 hover:opacity-75 rounded-lg z-10'>
+                            <FaHouseUser />
+                            <h1 className='whitespace-nowrap'>Seller Dashboard</h1>
+                        </Link>
+                    </div>
+                </div>
+            )}
             <User currentUser={currentUser} handleUserModal={handleUserModal} />
             {userModal && (
                 <div className='absolute right-0 top-16 mr-2 bg-primary brightness-150 text-primaryText rounded-lg shadow-lg px-10 py-3'>

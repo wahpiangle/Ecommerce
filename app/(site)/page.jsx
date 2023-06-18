@@ -5,7 +5,7 @@ import About from './components/About'
 
 const page = () => {
   return (
-    <div className='bg-black px-36 py-20'>
+    <div className='bg-black sm:px-32 px-12 py-10 sm:py-20'>
       <Header/>
       <About/>
     </div>

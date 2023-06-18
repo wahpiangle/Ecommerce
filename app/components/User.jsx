@@ -4,7 +4,7 @@ import React from 'react'
 
 const User = ({ currentUser, handleUserModal }) => {
     return (
-        <div className='flex hover:opacity-75 cursor-pointer flex-1 justify-end' onClick={handleUserModal} >
+        <div className='hover:opacity-75 cursor-pointer flex-1 justify-end hidden lg:flex' onClick={handleUserModal} >
             <div className="flex items-center gap-2">
                 <Image
                     src={currentUser?.image || '/assets/placeholder.png'}
