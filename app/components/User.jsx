@@ -1,21 +1,46 @@
 'use client'
 import Image from 'next/image'
-import React from 'react'
+import { Fragment } from 'react'
+import { Menu, Transition } from '@headlessui/react'
+import { BiLogOut } from 'react-icons/bi'
 
-const User = ({ currentUser, handleUserModal }) => {
+const User = ({ currentUser }) => {
     return (
-        <div className='hover:opacity-75 cursor-pointer flex-1 justify-end hidden lg:flex' onClick={handleUserModal} >
-            <div className="flex items-center gap-2">
-                <Image
-                    src={currentUser?.image || '/assets/placeholder.png'}
-                    width={40}
-                    height={40}
-                    className='rounded-full'
-                    alt='user_image'
-                />
-                <h1 className='text-primaryText flex items-center'>{currentUser?.name}</h1>
+        <Menu as="div" className="relative flex text-left flex-1 justify-end ">
+            <div>
+                <Menu.Button className="flex items-center gap-2 w-full justify-center rounded-md px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none">
+                    <Image src={currentUser?.image || '/assets/placeholder.png'} width={40} height={40} className='rounded-full' alt='user-image' />
+                    <p>{currentUser?.name}</p>
+                </Menu.Button>
             </div>
-        </div>
+            <Transition
+                as={Fragment}
+                enter="transition ease-out duration-100"
+                enterFrom="transform opacity-0 scale-95"
+                enterTo="transform opacity-100 scale-100"
+                leave="transition ease-in duration-75"
+                leaveFrom="transform opacity-100 scale-100"
+                leaveTo="transform opacity-0 scale-95"
+            >
+                <Menu.Items className="absolute top-12 right-0 mt-2 w-32 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <div className="p-3 ">
+                        <Menu.Item>
+                            {({ active }) => (
+                                <div className={`${active ? 'bg-secondaryText text-white' : 'text-gray-900'} gap-2 flex w-full items-center rounded-md px-2 py-2 text-sm`}>
+                                    <BiLogOut className='text-xl' />
+                                    <button
+                                        onClick={() => signOut()}
+                                    >
+                                        Sign Out
+                                    </button>
+                                </div>
+
+                            )}
+                        </Menu.Item>
+                    </div>
+                </Menu.Items>
+            </Transition>
+        </Menu>
     )
 }
 

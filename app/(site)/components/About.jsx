@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 const About = () => {
     return (
-        <div className='text-primaryText mt-24 flex sm:flex-row flex-col gap-8 sm:gap-16 bg-primary rounded-lg p-12'>
+        <div className='text-primaryText mt-24 flex lg:flex-row flex-col gap-8 sm:gap-16 bg-primary rounded-lg p-12'>
             <div className='min-w-fit min-h-fit'>
                 <Image
                     src='/assets/dealer.jpg'
