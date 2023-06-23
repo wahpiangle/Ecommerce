@@ -2,7 +2,7 @@
 import { Chart as Chartjs, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js'
 import { Bar } from 'react-chartjs-2'
 
-Chartjs.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+Chartjs.register(CategoryScale, LinearScale , BarElement, Title, Tooltip, Legend);
 
 const RevenueChart = ({dataValue}) => {
     const options = {
@@ -66,7 +66,7 @@ const RevenueChart = ({dataValue}) => {
         ]
     }
     return (
-        <div className='bg-primary p-6 h-[300px] w-[500px] rounded-xl'>
+        <div className='bg-primary p-6 h-[300px] justify-center flex w-fit rounded-xl'>
             <Bar data={data} options={options} />
         </div>
     )

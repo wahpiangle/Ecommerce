@@ -15,7 +15,7 @@ const Sidebar = () => {
   }
 
   return (
-    <div className='bg-primary min-h-screen p-4 flex flex-col gap-2'>
+    <div className='bg-primary min-h-full p-4 flex flex-col gap-2'>
       <SidebarButton title='Dashboard' link='/dashboard' icon={<AiOutlineDashboard/>} active={active} onClick={()=>handleActiveClick('Dashboard')}/>
       <SidebarButton title='Properties' link='/dashboard/properties' icon={<BiBuildings/>} active={active} onClick={()=>handleActiveClick('Properties')}/>
       <SidebarButton title='Orders' link='/dashboard/orders' icon={<FaFileInvoiceDollar/>} active={active} onClick={()=>handleActiveClick('Orders')}/>
