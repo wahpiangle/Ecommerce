@@ -6,9 +6,7 @@ import Searchbar from './Searchbar'
 import User from '../../components/User'
 import { AiOutlineMenu } from 'react-icons/ai'
 
-const Navbar = ({ currentUser }) => {
-    const [menuModal, setMenuModal] = useState(false);
-
+const Navbar = ({ currentUser, setMenuModal }) => {
     return (
         <nav className='flex bg-primary w-full py-4 px-6 gap-4 justify-between items-center'>
             <Link href='/' className='flex-1 sm:block hidden'>
@@ -18,7 +16,8 @@ const Navbar = ({ currentUser }) => {
                     alt="logo"
                 />
             </Link>
-            <AiOutlineMenu className='text-primaryText text-xl flex-1 sm:hidden'/>
+
+            <AiOutlineMenu className='text-primaryText text-2xl flex-1 sm:hidden cursor-pointer hover:text-3xl' onClick={()=> setMenuModal(state => !state)}/>
             <Searchbar />
             <User currentUser={currentUser}/>
 
