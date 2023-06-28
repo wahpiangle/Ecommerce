@@ -66,7 +66,7 @@ const RevenueChart = ({dataValue}) => {
         ]
     }
     return (
-        <div className='bg-primary p-6 h-[300px] justify-center flex w-fit rounded-xl'>
+        <div className='bg-primary p-6 h-[300px] justify-center flex w-full lg:w-fit rounded-xl'>
             <Bar data={data} options={options} />
         </div>
     )

@@ -9,7 +9,7 @@ import { AiOutlineMenu } from 'react-icons/ai'
 const Navbar = ({ currentUser, setMenuModal }) => {
     return (
         <nav className='flex bg-primary w-full py-4 px-6 gap-4 justify-between items-center'>
-            <Link href='/' className='flex-1 sm:block hidden'>
+            <Link href='/' className='flex-1 lg:block hidden'>
                 <Image src='/assets/logo-updated.png'
                     width={200}
                     height={50}
@@ -17,7 +17,7 @@ const Navbar = ({ currentUser, setMenuModal }) => {
                 />
             </Link>
 
-            <AiOutlineMenu className='text-primaryText text-2xl flex-1 sm:hidden cursor-pointer hover:text-3xl' onClick={()=> setMenuModal(state => !state)}/>
+            <AiOutlineMenu className='text-primaryText text-2xl flex-1 lg:hidden cursor-pointer hover:text-3xl' onClick={()=> setMenuModal(state => !state)}/>
             <Searchbar />
             <User currentUser={currentUser}/>
 
