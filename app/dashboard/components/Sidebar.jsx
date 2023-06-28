@@ -9,7 +9,6 @@ import { BsPersonCircle } from 'react-icons/bs'
 
 const Sidebar = ({ menuModal, pathName }) => {
   const [active, setActive] = useState('dashboard')
-  console.log(pathName)
   useMemo(()=>{
     setActive(pathName)
   },[pathName])
