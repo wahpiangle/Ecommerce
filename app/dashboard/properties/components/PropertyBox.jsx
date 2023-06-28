@@ -2,7 +2,7 @@ import Image from "next/image"
 import { BiBed, BiMapPin } from "react-icons/bi"
 import { BsSlashSquare } from "react-icons/bs"
 
-const PropertyBox = () => {
+const PropertyBox = ({link, image, title, price, location, beds, size}) => {
     return (
         <div className="flex gap-3 cursor-pointer hover:bg-[#111315] p-4 rounded-xl">
             <Image src="/assets/placeholder.png" alt="property" width={100} height={80} className="rounded-lg" />
