@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { BiLogOut } from 'react-icons/bi'
+import { signOut } from 'next-auth/react'
 
 const User = ({ currentUser }) => {
     return (
