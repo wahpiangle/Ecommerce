@@ -14,11 +14,11 @@ const PropertyBox = ({id, image, title, price, location, beds, size }) => {
                     <p className="text-secondaryText">{location}</p>
                 </div>
                 <div className="flex gap-5 mt-2">
-                    <div className="flex items-center text-primaryText gap-1 text-sm">
+                    <div className="flex items-center text-primaryText gap-1 text-sm whitespace-nowrap">
                         <BiBed />
                         <p>{beds} Beds</p>
                     </div>
-                    <div className="flex items-center text-primaryText gap-1 text-sm">
+                    <div className="flex items-center text-primaryText gap-1 text-sm whitespace-nowrap">
                         <BsSlashSquare />
                         <p>{size} sqft</p>
                     </div>

@@ -17,7 +17,7 @@ const Navbar = ({ currentUser, setMenuModal }) => {
                 />
             </Link>
 
-            <AiOutlineMenu className='text-primaryText text-2xl flex-1 lg:hidden cursor-pointer hover:text-3xl' onClick={()=> setMenuModal(state => !state)}/>
+            <AiOutlineMenu className='text-primaryText text-2xl flex-1 min-w-fit lg:hidden cursor-pointer hover:text-3xl' onClick={()=> setMenuModal(state => !state)}/>
             <Searchbar />
             <User currentUser={currentUser}/>
 
