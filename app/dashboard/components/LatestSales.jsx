@@ -4,7 +4,7 @@ import { BsArrowRight } from 'react-icons/bs'
 
 const LatestSales = ({ list }) => {
   return (
-    <div className='w-full bg-primary rounded-xl p-6'>
+    <div className='w-full bg-primary rounded-xl p-6 flex-1'>
       <div className='flex items-center justify-between'>
         <h1 className='font-bold text-xl'>Latest Sales</h1>
         <BsArrowRight className='text-xl cursor-pointer' />

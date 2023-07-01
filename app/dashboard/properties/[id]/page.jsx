@@ -8,11 +8,18 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { BiMapPin } from 'react-icons/bi'
 import { Rating } from '@mui/material'
 import { BiBed } from 'react-icons/bi'
-import { BsSlashSquare } from 'react-icons/bs'
+import { BsSlashSquare, BsThreeDots } from 'react-icons/bs'
+import dynamic from 'next/dynamic'
+import { useMemo } from 'react'
 
 const page = () => {
   const { id } = useParams()
   const { data, error, isLoading } = getPropertyData(id)
+
+  const Map = useMemo(()=>dynamic(()=> import('./components/Map'), {
+    ssr: false
+  }),[data])
+
   return (
     <div className='bg-primary rounded-xl p-4 mx-2'>
       <Link className='text-primaryText text-xl font-semibold cursor-pointer' href="/dashboard/properties">
@@ -20,8 +27,8 @@ const page = () => {
         Details
       </Link>
       <div>
-        <div className="mt-6 flex">
-          <div>
+        <div className="mt-6 flex gap-4">
+          <div className='flex-1'>
             <Carousel showArrows={true} className='w-[600px] h-[300px]'>
               {/* {data?.images?.map((item) => (
               <div key={item.id}>
@@ -77,6 +84,15 @@ const page = () => {
               <h1 className='text-xl mt-5'>Description</h1>
               <p className='text-secondaryText text-sm'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, officia, ipsam exercitationem quaerat quos ab dolore aperiam distinctio ratione deleniti, harum labore ipsa. Ea quae quas placeat quasi aliquam ratione.</p>
             </div>
+          </div>
+          <div className='flex-1 flex flex-col gap-4'>
+            <div className='p-6 flex whitespace-nowrap border-[1px] items-center border-secondaryText rounded-xl min-w-max flex-col'>
+              <BsThreeDots className='text-2xl self-end text-secondaryText' />
+              <Image src="http://dummyimage.com/100x100.png/5fa2dd/ffffff" width={100} height={100} alt='agent-image' className='rounded-full' />
+              <h1 className='text-xl mt-2'>Agent Name</h1>
+              <p className='mt-2 text-secondaryText'>0123456789</p>
+            </div>
+            <Map/>
           </div>
         </div>
       </div>

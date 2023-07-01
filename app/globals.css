@@ -82,3 +82,10 @@
     border-top-right-radius: 4px;
     display: none !important;
 }
+
+.leaflet-bottom,
+.leaflet-control,
+.leaflet-top,
+.leaflet-pane{
+    z-index: 0 !important;
+}
