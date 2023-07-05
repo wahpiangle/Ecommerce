@@ -12,7 +12,6 @@ L.Icon.Default.mergeOptions({
     shadowUrl: markerShadow.src
 })
 
-
 const Map = () => {
     const center = [47.33333333, 13.33333333]
     return (

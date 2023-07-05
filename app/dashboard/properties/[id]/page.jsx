@@ -79,7 +79,7 @@ const page = () => {
             <div>
               <h1 className='text-xl mt-5'>Facilities</h1>
               <div className='mt-4'>
-                {/* Add FacilityItem.jsx */}
+                {/*! Add FacilityItem.jsx */}
               </div>
               <h1 className='text-xl mt-5'>Description</h1>
               <p className='text-secondaryText text-sm'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, officia, ipsam exercitationem quaerat quos ab dolore aperiam distinctio ratione deleniti, harum labore ipsa. Ea quae quas placeat quasi aliquam ratione.</p>
