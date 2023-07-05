@@ -8,12 +8,79 @@ datasource db {
 }
 
 model User {
-    id             String   @id @default(auto()) @map("_id") @db.ObjectId //map is for mongodb, the @db.ObjectId is for the type of the field
+    id             String        @id @default(auto()) @map("_id") @db.ObjectId //map is for mongodb, the @db.ObjectId is for the type of the field
     name           String?
-    email          String?   @unique
+    email          String?       @unique
     image          String?
-    seller        Boolean   @default(false)
-    hashedPassword String?
-    createdAt      DateTime @default(now())
-    updatedAt      DateTime @updatedAt
+    seller         Boolean       @default(false)
+    hashedPassword String
+    createdAt      DateTime      @default(now())
+    updatedAt      DateTime      @updatedAt
+    reservations   Reservation[]
+    purchases      Purchases[]
+}
+
+model Property {
+    id           String        @id @default(auto()) @map("_id") @db.ObjectId
+    title        String
+    type         String
+    address      String
+    description  String
+    salePrice    Float?
+    rentalPrice  Float?
+    bedroom      Int
+    bathroom     Int
+    size         Int
+    rating       Float?
+    image        String[]
+    facilities   String[]
+    booked       Boolean       @default(false)
+    purchased    Boolean       @default(false)
+    bookedDates  DateTime[]
+    createdAt    DateTime      @default(now())
+    updatedAt    DateTime      @updatedAt
+    owner        Seller        @relation(fields: [ownerId], references: [id])
+    ownerId      String        @db.ObjectId
+    available    Boolean       @default(true)
+    reservations Reservation[]
+    agent        Agent?        @relation(fields: [agentId], references: [id])
+    agentId      String?       @db.ObjectId
+    Purchases    Purchases[]
+}
+
+model Seller {
+    id          String     @id @default(auto()) @map("_id") @db.ObjectId
+    properties  Property[]
+    propertyIds String[]   @db.ObjectId
+}
+
+model Reservation {
+    id         String   @id @default(auto()) @map("_id") @db.ObjectId
+    property   Property @relation(fields: [propertyId], references: [id])
+    propertyId String   @db.ObjectId
+    user       User     @relation(fields: [userId], references: [id])
+    userId     String   @db.ObjectId
+    startDate  DateTime
+    endDate    DateTime
+    createdAt  DateTime @default(now())
+    updatedAt  DateTime @updatedAt
+    cost       Float
+}
+
+model Purchases {
+    id         String   @id @default(auto()) @map("_id") @db.ObjectId
+    property   Property @relation(fields: [propertyId], references: [id])
+    propertyId String   @db.ObjectId
+    user       User     @relation(fields: [userId], references: [id])
+    userId     String   @db.ObjectId
+    createdAt  DateTime @default(now())
+    updatedAt  DateTime @updatedAt
+    cost       Float
+}
+
+model Agent {
+    id          String     @id @default(auto()) @map("_id") @db.ObjectId
+    properties  Property[]
+    propertyIds String[]   @db.ObjectId
+    contact     String
 }
