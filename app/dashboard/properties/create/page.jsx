@@ -1,11 +1,24 @@
 'use client'
 import { useForm, Controller } from "react-hook-form"
 import SelectFacility from "./components/SelectFacility"
+import { CldUploadButton } from "next-cloudinary"
+import { useEffect, useState } from "react"
+import { RxCross1 } from "react-icons/rx"
+
 const page = () => {
   const { register, handleSubmit, formState: { errors }, control } = useForm()
+  const [uploaded, setUploaded] = useState([])
+  const [images, setImages] = useState([])
+  const handleUpload = (result) => {
+    setUploaded(prev => [...prev, result.info.original_filename])
+    setImages(prev => [...prev, result.info.secure_url])
+  }
+  
   const onSubmit = (data) =>{
-    console.log('clicked ')
-    console.log(data)
+    console.log({
+      ...data,
+      images: images,
+    })
   }
   const onError = (errors, e) => console.log(errors, e)
   return (
@@ -56,6 +69,34 @@ const page = () => {
               <label htmlFor="bathroom" className="text-lg">Select Number of Bathrooms</label>
               <input type="number" id="bathroom" {...register("bathroom", { required: true })} className="px-2 py-3 focus:outline-none rounded-lg bg-primary border-[1px] border-secondaryText"/>
             </div>
+          </div>
+          <div className="mt-3 flex flex-col gap-1">
+            <label htmlFor="images" className="text-lg">Upload Images</label>
+            <div className="flex gap-2 items-center">
+            <CldUploadButton 
+              uploadPreset="ygimkesr"
+              className="flex justify-start bg-primary border-[1px] rounded-lg border-secondaryText px-3 py-2"
+              onUpload={(result) => handleUpload(result)}
+              >
+              Upload
+            </CldUploadButton>
+            <p>{uploaded.map((item,index)=>{
+              if(index === uploaded.length-1){
+                return <span key={item} className="mr-1">{item}</span>
+              }else{
+                return <span key={item} className="mr-1">{item},</span>
+              }
+            })}</p>
+            {images.length>0 &&
+              <RxCross1 onClick={()=>{
+                setImages([]);
+                setUploaded([]);
+              }}
+              className="cursor-pointer text-red-500 hover:text-red-700"
+              />
+            }
+            </div>
+
           </div>
           <button type="submit" className="cursor-pointer px-3 py-2 bg-blueText rounded-lg mt-3 hover:brightness-75">Add Property</button>
         </form>

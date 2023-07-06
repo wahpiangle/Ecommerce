@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@cloudinary/react": "^1.11.2",
+    "@cloudinary/url-gen": "^1.10.1",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@headlessui/react": "^1.7.15",
@@ -25,6 +27,7 @@
     "leaflet": "^1.9.4",
     "next": "13.4.7",
     "next-auth": "^4.22.1",
+    "next-cloudinary": "^4.13.0",
     "postcss": "8.4.24",
     "react": "18.2.0",
     "react-chartjs-2": "^5.2.0",
