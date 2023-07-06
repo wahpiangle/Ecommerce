@@ -13,8 +13,9 @@ const page = () => {
     setUploaded(prev => [...prev, result.info.original_filename])
     setImages(prev => [...prev, result.info.secure_url])
   }
-  
+
   const onSubmit = (data) =>{
+    //TODO handle submit to backend
     console.log({
       ...data,
       images: images,
@@ -73,7 +74,7 @@ const page = () => {
           <div className="mt-3 flex flex-col gap-1">
             <label htmlFor="images" className="text-lg">Upload Images</label>
             <div className="flex gap-2 items-center">
-            <CldUploadButton 
+            <CldUploadButton
               uploadPreset="ygimkesr"
               className="flex justify-start bg-primary border-[1px] rounded-lg border-secondaryText px-3 py-2"
               onUpload={(result) => handleUpload(result)}
