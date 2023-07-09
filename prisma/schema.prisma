@@ -26,6 +26,7 @@ model Property {
     type         String
     address      String
     description  String
+    listingType  String
     salePrice    Float?
     rentalPrice  Float?
     bedroom      Int
@@ -46,6 +47,7 @@ model Property {
     agent        Agent?        @relation(fields: [agentId], references: [id])
     agentId      String?       @db.ObjectId
     Purchases    Purchases[]
+    country      String
 }
 
 model Seller {

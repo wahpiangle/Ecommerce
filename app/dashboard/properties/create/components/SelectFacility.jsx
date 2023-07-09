@@ -1,5 +1,5 @@
 import Select from 'react-select';
-import { facilities } from '@/app/data/facilityIconMap';
+import { facilities, facilityIconMap } from '@/app/data/facilityIconMap';
 
 const SelectFacility = ({...field}) => {
     const colorStyles = {
@@ -54,6 +54,12 @@ const SelectFacility = ({...field}) => {
             {...field}
             menuPlacement='bottom'
             menuPosition='fixed'
+            formatOptionLabel={(option) => (
+                <div className='flex items-center gap-3'>
+                    <div>{facilityIconMap[option.value]}</div>
+                    <div>{option.label}</div>
+                </div>
+            )}
         />
     )
 }
