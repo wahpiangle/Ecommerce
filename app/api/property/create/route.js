@@ -4,25 +4,42 @@ import prisma from '@/app/libs/prismadb';
 export async function POST(request){
     try{
         const body = await request.json();
-        const { title, description, type, price, facilities, bathroom, bedroom, listingType, images, country, size } = body;
-        if(!title || !description || !type || !price || !facilities || !bathroom || !bedroom || !listingType || !country || !size){
+        const { title, description, type, price, facilities, address, bathroom, bedroom, listingType, images, country, size, userEmail } = body;
+        if(!title || !description || !type || !price || !facilities || !address || !bathroom || !bedroom || !listingType || !country || !size){
             return new NextResponse('Missing property data', {status: 400});
         }
+        if(!userEmail){
+            return new NextResponse('Unauthorized', {status: 401})
+        }
+        const user = await prisma.user.findUnique({
+            where: {
+                email: userEmail
+            }
+        });
 
+        if(!user){
+            return new NextResponse('Unauthorized', {status: 401});
+        }
         if(listingType === 'Rent' && listingType !== 'Sale'){
             const property = await prisma.property.create({
                 data: {
                     title,
                     description,
                     type,
-                    rentalPrice: price,
+                    rentalPrice: parseFloat(price),
                     facilities,
-                    bathroom,
-                    bedroom,
+                    address,
+                    bathroom: parseInt(bathroom),
+                    bedroom: parseInt(bedroom),
                     listingType,
                     images,
-                    country,
-                    size
+                    country: country.label,
+                    size: parseInt(size),
+                    owner: {
+                        connect: {
+                            id: user.id
+                        }
+                    }
                 }
             });
             if(!property){
@@ -36,14 +53,20 @@ export async function POST(request){
                     title,
                     description,
                     type,
-                    salePrice: price,
+                    salePrice: parseFloat(price),
                     facilities,
-                    bathroom,
-                    bedroom,
+                    address,
+                    bathroom: parseInt(bathroom),
+                    bedroom: parseInt(bedroom),
                     listingType,
                     images,
                     country,
-                    size
+                    size: parseInt(size),
+                    owner: {
+                        connect: {
+                            id: user.id
+                        }
+                    }
                 }
             });
             if(!property){

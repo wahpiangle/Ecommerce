@@ -7,11 +7,13 @@ import { RxCross1 } from "react-icons/rx"
 import axios from "axios"
 import SelectCountries from "./components/SelectCountries"
 import { toast } from "react-hot-toast"
+import { useSession } from "next-auth/react"
 
 const page = () => {
   const { register, handleSubmit, formState: { errors }, control } = useForm()
   const [uploaded, setUploaded] = useState([])
   const [images, setImages] = useState([])
+  const session = useSession();
   const handleUpload = (result) => {
     setUploaded(prev => [...prev, result.info.original_filename])
     setImages(prev => [...prev, result.info.secure_url])
@@ -23,13 +25,15 @@ const page = () => {
       description: data.description,
       type: data.type,
       price: data.price,
+      address: data.address,
       facilities: data.facilities.map(item => item.value),
       listingType: data.listingType,
       bedroom: data.bedroom,
       bathroom: data.bathroom,
       size: data.size,
       images: images,
-      country: data.country
+      country: data.country,
+      userEmail: session.data.user.email,
     }).then(res => {
       toast.success('Property Added!')
     }).catch(err => {
@@ -50,6 +54,10 @@ const page = () => {
           <div className="flex flex-col gap-2 mt-3">
             <label htmlFor="description" className="text-lg">Enter Description</label>
             <textarea id="description" {...register("description", { required: true })} className="px-2 py-3 h-[100px] resize-none focus:outline-none rounded-lg bg-primary border-[1px] border-secondaryText" placeholder="Description" />
+          </div>
+          <div className="flex flex-col gap-2">
+            <label htmlFor="address" className="text-lg">Enter Address</label>
+            <input type="text" id="address" {...register("address", { required: true })} className="px-2 py-3 focus:outline-none rounded-lg bg-primary border-[1px] border-secondaryText" placeholder="Property Address" />
           </div>
           <div className="flex mt-3 gap-6 items-center">
             <div className="flex flex-1 flex-col gap-2">

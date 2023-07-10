@@ -9,8 +9,8 @@ datasource db {
 
 model User {
     id             String        @id @default(auto()) @map("_id") @db.ObjectId //map is for mongodb, the @db.ObjectId is for the type of the field
-    name           String?
-    email          String?       @unique
+    name           String
+    email          String        @unique
     image          String?
     seller         Boolean       @default(false)
     hashedPassword String
@@ -18,6 +18,8 @@ model User {
     updatedAt      DateTime      @updatedAt
     reservations   Reservation[]
     purchases      Purchases[]
+    properties     Property[]
+    propertyIds    String[]      @db.ObjectId
 }
 
 model Property {
@@ -32,15 +34,15 @@ model Property {
     bedroom      Int
     bathroom     Int
     size         Int
-    rating       Float?
-    image        String[]
+    rating       Float? @default(0)
+    images       String[]
     facilities   String[]
     booked       Boolean       @default(false)
     purchased    Boolean       @default(false)
     bookedDates  DateTime[]
     createdAt    DateTime      @default(now())
     updatedAt    DateTime      @updatedAt
-    owner        Seller        @relation(fields: [ownerId], references: [id])
+    owner        User          @relation(fields: [ownerId], references: [id])
     ownerId      String        @db.ObjectId
     available    Boolean       @default(true)
     reservations Reservation[]
@@ -48,12 +50,6 @@ model Property {
     agentId      String?       @db.ObjectId
     Purchases    Purchases[]
     country      String
-}
-
-model Seller {
-    id          String     @id @default(auto()) @map("_id") @db.ObjectId
-    properties  Property[]
-    propertyIds String[]   @db.ObjectId
 }
 
 model Reservation {
