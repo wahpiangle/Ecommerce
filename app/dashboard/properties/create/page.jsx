@@ -8,6 +8,7 @@ import axios from "axios"
 import SelectCountries from "./components/SelectCountries"
 import { toast } from "react-hot-toast"
 import { useSession } from "next-auth/react"
+import Link from "next/link"
 
 const page = () => {
   const { register, handleSubmit, formState: { errors }, control } = useForm()
@@ -44,7 +45,11 @@ const page = () => {
 
   return (
     <div>
-      <h1 className='text-primaryText text-2xl font-semibold whitespace-nowrap'>Add a Property</h1>
+      <Link className='text-primaryText text-xl font-semibold cursor-pointer flex items-center' href="/dashboard/properties">
+        <span className="font-bold text-2xl mr-1">{'<'}</span>
+        <p className="underline">Details</p>
+      </Link>
+      <h1 className='text-primaryText text-2xl font-semibold whitespace-nowrap mt-3'>Add a Property</h1>
       <div className="bg-primary rounded-xl p-4 mx-2 mt-3">
         <form onSubmit={handleSubmit(onSubmit, onError)}>
           <div className="flex flex-col gap-2">
