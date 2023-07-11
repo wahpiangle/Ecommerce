@@ -20,6 +20,7 @@ export async function POST(request){
         if(!user){
             return new NextResponse('Unauthorized', {status: 401});
         }
+
         if(listingType === 'Rent' && listingType !== 'Sale'){
             const property = await prisma.property.create({
                 data: {
@@ -42,7 +43,18 @@ export async function POST(request){
                     }
                 }
             });
-            if(!property){
+            const updatedUser = await prisma.user.update({
+                where:{
+                    email: userEmail,
+                },
+                data: {
+                    propertyIds:{
+                        push: property.id
+                    }
+                }
+            })
+
+            if(!property || !updatedUser){
                 return new NextResponse('Property creation error', {status: 500});
             }
             return new NextResponse(JSON.stringify(property), {status: 201});
@@ -69,7 +81,19 @@ export async function POST(request){
                     }
                 }
             });
-            if(!property){
+
+            const updatedUser = await prisma.user.update({
+                where:{
+                    email: userEmail,
+                },
+                data: {
+                    propertyIds:{
+                        push: property.id
+                    }
+                }
+            })
+
+            if(!property || !updatedUser){
                 return new NextResponse('Property creation error', {status: 500});
             }
             return new NextResponse(JSON.stringify(property), {status: 201});

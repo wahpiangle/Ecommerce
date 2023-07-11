@@ -1,9 +1,10 @@
 'use client'
 import { useEffect, useState } from "react"
 import PropertyBox from "./components/PropertyBox"
-import { property } from "@/app/data/property"
 import ReactPaginate from "react-paginate"
 import Link from "next/link"
+import axios from "axios"
+import useSWR from "swr"
 
 const PropertyItems = ({ currentItems }) => {
   return (
@@ -16,23 +17,32 @@ const PropertyItems = ({ currentItems }) => {
 }
 
 const page = () => {
+  const property = [
+    { "id": "649cfa3efc13ae2b3d7753e7", "image": "http://dummyimage.com/100x100.png/5fa2dd/ffffff", "title": "PO Box 13210", "price": 1818, "location": "Mars", "beds": 2, "size": 1875 },
+    { "id": "649cfa3efc13ae2b3d7753e8", "image": "http://dummyimage.com/100x100.png/cc0000/ffffff", "title": "Apt 899", "price": 2864, "location": "Mars", "beds": 3, "size": 2570 }
+  ]
+
+  const fetcher = (url) => axios.get(url).then((res) => res.data);
+  const { data: properties, error, isLoading } = useSWR(`/api/property/get`, fetcher);
+  console.log(properties)
   //number 10 indicates number of items per page
   const [search, setSearch] = useState('')
   const [itemOffset, setItemOffset] = useState(0);
   const [filteredResult, setFilteredResult] = useState(property)
 
-  useEffect(()=>{
+
+  useEffect(() => {
     const filteredData = property.filter(item => {
       return item.title.toLowerCase().includes(search.toLowerCase())
-    })
+    }, [search, property])
 
-    if(search !== ''){
+    if (search !== '') {
       setFilteredResult(filteredData)
     }
-    else{
+    else {
       setFilteredResult(property)
     }
-  },[search])
+  }, [search])
 
   const endOffset = itemOffset + 10;
   const currentItems = filteredResult.slice(itemOffset, endOffset);
@@ -43,7 +53,7 @@ const page = () => {
     setItemOffset(newOffset);
   };
 
-  const searchItems = (searchValue) =>{
+  const searchItems = (searchValue) => {
     setSearch(searchValue)
   }
 
