@@ -15,6 +15,7 @@ import { useMemo } from 'react'
 const page = () => {
   const { id } = useParams()
   const { data, error, isLoading } = getPropertyData(id)
+  console.log(data)
 
   const Map = useMemo(()=>dynamic(()=> import('./components/Map'), {
     ssr: false
@@ -27,7 +28,7 @@ const page = () => {
         Details
       </Link>
       <div>
-        <div className="mt-6 flex gap-4">
+        <div className="mt-6 flex gap-4 flex-wrap">
           <div className='flex-1'>
             <Carousel showArrows={true} className='w-[600px] h-[300px]'>
               {/* {data?.images?.map((item) => (

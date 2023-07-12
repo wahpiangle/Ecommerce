@@ -12,7 +12,7 @@ const PropertyItems = ({ currentItems }) => {
   return (
     <>
       {currentItems && currentItems.map((item) => (
-        <PropertyBox key={item.id} id={item.id} image={item.image} title={item.title} price={item?.rentalPrice || item?.salePrice} location={item.country} beds={item.beds} size={item.size} />
+        <PropertyBox key={item.id} id={item.id} image={item.image} title={item.title} price={item?.rentalPrice || item?.salePrice} location={item.country} beds={item.beds} size={item.size} listingType={item.listingType} />
       ))}
     </>
   )
@@ -31,7 +31,7 @@ const page = () => {
 
   useMemo(() => {
     if(!data) return
-    
+    if(error) toast.error('Failed to load properties. Please refresh the page.')
     const filteredData = data.filter(item => {
       return item.title.toLowerCase().includes(search.toLowerCase())
     }, [search, data])
