@@ -25,7 +25,6 @@ const page = () => {
 
   const { data, error, isLoading } = useSWR(`/api/property/${id}`, fetcher)
   const listingType = data?.listingType
-  console.log(data)
   const Map = useMemo(() => dynamic(() => import('./components/Map'), {
     ssr: false
   }), [data])
