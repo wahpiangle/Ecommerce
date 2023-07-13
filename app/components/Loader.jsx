@@ -1,7 +1,7 @@
 const Loader = () => {
   return (
     <div className="flex justify-center p-16">
-      <span class="loader"></span>
+      <span className="loader"></span>
     </div>
   )
 }

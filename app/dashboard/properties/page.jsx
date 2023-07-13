@@ -5,7 +5,7 @@ import ReactPaginate from "react-paginate"
 import Link from "next/link"
 import axios from "axios"
 import useSWR from "swr"
-import Loader from "./components/Loader"
+import Loader from "../../components/Loader"
 import { toast } from "react-hot-toast"
 
 const PropertyItems = ({ currentItems }) => {
