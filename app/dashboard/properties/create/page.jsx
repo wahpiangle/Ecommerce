@@ -21,6 +21,10 @@ const page = () => {
   }
 
   const onSubmit = (data) => {
+    if(!data.title || !data.description || !data.address || !data.type || !data.listingType || !data.price || !data.bedroom || !data.bathroom || !data.size || !data.country) {
+      toast.error('Please fill in all the fields!')
+      return
+    }
     axios.post('/api/property/create', {
       title: data.title,
       description: data.description,
