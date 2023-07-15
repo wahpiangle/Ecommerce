@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import SidebarButton from './SidebarButton'
 import { AiOutlineDashboard } from 'react-icons/ai'
 import { BiBuildings } from 'react-icons/bi'
@@ -27,7 +27,7 @@ const Sidebar = ({ menuModal, pathName }) => {
         <SidebarButton title='Dashboard' link='/dashboard' icon={<AiOutlineDashboard />} active={active} onClick={() => handleActiveClick('dashboard')} />
         <SidebarButton title='Properties' link='/dashboard/properties' icon={<BiBuildings />} active={active} onClick={() => handleActiveClick('properties')} />
         <SidebarButton title='Orders' link='/dashboard/orders' icon={<FaFileInvoiceDollar />} active={active} onClick={() => handleActiveClick('orders')} />
-        <SidebarButton title='Orders' link='/dashboard/profile' icon={<BsPersonCircle />} active={active} onClick={() => handleActiveClick('profile')} />
+        <SidebarButton title='Agents' link='/dashboard/agents' icon={<BsPersonCircle />} active={active} onClick={() => handleActiveClick('agents')} />
       </div>
       {
         menuModal &&
@@ -39,7 +39,7 @@ const Sidebar = ({ menuModal, pathName }) => {
             <SidebarButton title='Dashboard' link='/dashboard' icon={<AiOutlineDashboard />} active={active} onClick={() => handleActiveClick('Dashboard')} />
             <SidebarButton title='Properties' link='/dashboard/properties' icon={<BiBuildings />} active={active} onClick={() => handleActiveClick('Properties')} />
             <SidebarButton title='Orders' link='/dashboard/orders' icon={<FaFileInvoiceDollar />} active={active} onClick={() => handleActiveClick('Orders')} />
-            <SidebarButton title='Orders' link='/dashboard/profile' icon={<BsPersonCircle />} active={active} onClick={() => handleActiveClick('Profile')} />
+            <SidebarButton title='Agents' link='/dashboard/agents' icon={<BsPersonCircle />} active={active} onClick={() => handleActiveClick('Agents')} />
           </div>
         </div>
 

@@ -4,6 +4,8 @@ import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { BiLogOut } from 'react-icons/bi'
 import { signOut } from 'next-auth/react'
+import { MdManageAccounts } from 'react-icons/md'
+import Link from 'next/link'
 
 const User = ({ currentUser }) => {
     return (
@@ -27,7 +29,18 @@ const User = ({ currentUser }) => {
                     <div className="p-3 ">
                         <Menu.Item>
                             {({ active }) => (
-                                <div className={`${active ? 'bg-secondaryText text-white' : 'text-gray-900'} gap-2 flex w-full items-center rounded-md px-2 py-2 text-sm`}>
+                                <div className={`${active ? 'bg-secondaryText text-white' : 'text-gray-900'} gap-2 flex w-full items-center rounded-md cursor-pointer px-2 py-2 text-sm`}>
+                                    <MdManageAccounts className='text-xl' />
+                                    <Link href='/dashboard/setting'
+                                    >
+                                        Settings
+                                    </Link>
+                                </div>
+                            )}
+                        </Menu.Item>
+                        <Menu.Item>
+                            {({ active }) => (
+                                <div className={`${active ? 'bg-secondaryText text-white' : 'text-gray-900'} gap-2 flex w-full items-center rounded-md px-2 cursor-pointer py-2 text-sm`}>
                                     <BiLogOut className='text-xl' />
                                     <button
                                         onClick={() => signOut()}
@@ -35,9 +48,9 @@ const User = ({ currentUser }) => {
                                         Sign Out
                                     </button>
                                 </div>
-
                             )}
                         </Menu.Item>
+
                     </div>
                 </Menu.Items>
             </Transition>

@@ -95,17 +95,17 @@ const page = () => {
                     ))}
                   </div>
                   <h1 className='text-xl mt-5'>Description</h1>
-                  <p className='text-secondaryText text-sm'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, officia, ipsam exercitationem quaerat quos ab dolore aperiam distinctio ratione deleniti, harum labore ipsa. Ea quae quas placeat quasi aliquam ratione.</p>
+                  <p className='text-secondaryText text-sm'>{data.description}</p>
                 </div>
               </div>
               <div className='flex-1 flex flex-col gap-4'>
                 <div className='p-6 flex whitespace-nowrap border-[1px] items-center border-secondaryText rounded-xl min-w-max flex-col'>
                   <BsThreeDots className='text-2xl self-end text-secondaryText' />
                   <Image src="http://dummyimage.com/100x100.png/5fa2dd/ffffff" width={100} height={100} alt='agent-image' className='rounded-full' />
-                  <h1 className='text-xl mt-2'>Agent Name</h1>
-                  <p className='mt-2 text-secondaryText'>0123456789</p>
+                  <h1 className='text-xl mt-2'>{data.agent || "No Agent Assigned"}</h1>
+                  <p className='mt-2 text-secondaryText'>{data.contact || ""}</p>
                 </div>
-                <Map />
+                <Map location={data.country}/>
               </div>
             </div>
           </div>}

@@ -15,7 +15,11 @@ const useCountries = () => {
         return formattedCountries.find((item) => item.value === value);
     }
 
-    return { getAll, getByValue }
+    const getByLabel = (label) => {
+        return formattedCountries.find((item) => item.label === label);
+    }
+
+    return { getAll, getByValue, getByLabel }
 }
 
 export default useCountries;

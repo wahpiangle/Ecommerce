@@ -4,6 +4,7 @@ import 'leaflet/dist/leaflet.css'
 import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png'
 import markerIcon from 'leaflet/dist/images/marker-icon.png'
 import markerShadow from 'leaflet/dist/images/marker-shadow.png'
+import useCountries from '@/app/actions/useCountries'
 
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -12,8 +13,9 @@ L.Icon.Default.mergeOptions({
     shadowUrl: markerShadow.src
 })
 
-const Map = () => {
-    const center = [47.33333333, 13.33333333]
+const Map = ({location}) => {
+    const { getByLabel } = useCountries()
+    const center = getByLabel(location).latlng;
     return (
         <MapContainer
             center={center || [51, -0.09]}
@@ -22,7 +24,7 @@ const Map = () => {
             className='rounded-lg h-[300px] focus:outline-none'
         >
             <TileLayer
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             {center && (

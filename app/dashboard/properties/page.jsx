@@ -66,10 +66,10 @@ const page = () => {
         <Link className='bg-blueText hover:brightness-75 rounded-lg py-3 px-4 whitespace-nowrap' href="properties/create">+ Add Property</Link>
       </div>
       <div className='bg-primary rounded-lg mt-4 p-3 mx-2'>
-        {isLoading ? <Loader /> : 
+        {isLoading ? <Loader /> :
         error ? <p>Failed to load properties. Please refresh the page.</p> :
           <>
-            <input type='text' placeholder='Search' className='bg-primary focus:outline-none text-primaryText rounded-lg p-2 w-full border-[1px] border-secondaryText' onChange={(e) => searchItems(e.target.value)} />
+            <input type='text' placeholder='Search' className='bg-primary focus:outline-none text-primaryText rounded-lg p-2 mt-2 w-full border-[1px] border-secondaryText' onChange={(e) => searchItems(e.target.value)} />
             <div className="mt-4 grid md:grid-cols-2">
               <PropertyItems currentItems={currentItems} />
             </div>
