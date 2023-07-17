@@ -22,10 +22,10 @@ const About = () => {
                     Whether it's selling your current home, buying your next one or finding a rental property, we can help. We're a full-service estate agency, with local experts on hand to help you at every stage of your property journey.
                 </p>
                 <div className='flex gap-4 mt-6'>
-                    <Link href="/purchase">
+                    <Link href={{pathname: '/properties', query: {type: 'purchase'}}}>
                         <button className='bg-blueText text-primaryText rounded-lg py-2 px-4 text-lg hover:opacity-50 font-semibold'>To Purchase</button>
                     </Link>
-                    <Link href="/rent" className='hover:opacity-75 bg-secondaryText text-primaryText rounded-lg'>
+                    <Link href={{pathname: '/properties', query: {type: 'rent'}}} className='hover:opacity-75 bg-secondaryText text-primaryText rounded-lg'>
                         <button className=' rounded-lg py-2 px-4 text-lg font-semibold'>To Rent</button>
                     </Link>
                 </div>

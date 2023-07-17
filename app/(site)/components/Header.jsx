@@ -29,12 +29,12 @@ const Header = () => {
                             <BsFillCalendarEventFill className='text-lg' />
                         </div>
                     </div>
-                    <Link href={`/${selection}`} className='ml-3 my-1 flex-1 sm:flex hidden bg-blueText whitespace-nowrap text-primaryText px-3 rounded-lg text-lg font-semibold items-center hover:opacity-90'>
+                    <Link href={{pathname: '/properties', query: {type: selection}}} className='ml-3 my-1 flex-1 sm:flex hidden bg-blueText whitespace-nowrap text-primaryText px-3 rounded-lg text-lg font-semibold items-center hover:opacity-90'>
                         <button>
                             Browse Properties
                         </button>
                     </Link>
-                    <Link className='sm:hidden flex items-center my-auto h-[50px] ml-2 bg-blueText flex-1 rounded-lg justify-center w-[50px]' href={`/${selection}`}>
+                    <Link className='sm:hidden flex items-center my-auto h-[50px] ml-2 bg-blueText flex-1 rounded-lg justify-center w-[50px]' href={{pathname: '/properties', query: {type: selection}}}>
                         <AiOutlineSearch className='text-2xl text-primaryText' />
                     </Link>
                 </div>

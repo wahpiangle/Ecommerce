@@ -22,8 +22,8 @@ const Navbar = ({ currentUser }) => {
                 />
             </Link>
             <div className='hidden text-primaryText text-lg gap-8 items-center flex-1 justify-center lg:flex'>
-                <Link href='/purchase' className='cursor-pointer hover:opacity-75'>Purchase</Link>
-                <Link href='/rent' className='cursor-pointer hover:opacity-75'>Rent</Link>
+                <Link href={{pathname: '/properties', query: {type: 'purchase'}}} className='cursor-pointer hover:opacity-75'>Purchase</Link>
+                <Link href={{pathname: '/properties', query: {type: 'rent'}}} className='cursor-pointer hover:opacity-75'>Rent</Link>
                 <Link href='/dashboard' className='cursor-pointer flex items-center gap-2 bg-blueText py-2 px-3 hover:opacity-75 rounded-lg z-10'>
                     <FaHouseUser />
                     <h1 className='whitespace-nowrap'>Seller Dashboard</h1>
@@ -33,15 +33,15 @@ const Navbar = ({ currentUser }) => {
                 <AiOutlineMenu className='text-3xl cursor-pointer text-primaryText items-end' />
             </div>
             {navModal && (
-                <div className='absolute right-0 top-16 mr-2 sm:hidden bg-primary brightness-150 text-primaryText rounded-lg shadow-lg p-4'>
+                <div className='absolute right-0 top-16 mr-2 sm:hidden bg-[#25292c] text-primaryText rounded-lg shadow-lg p-4'>
                     <div className='flex flex-col justify-center items-center gap-3'>
-                        <Link href='/purchase' className='cursor-pointer hover:opacity-75'>Purchase</Link>
-                        <Link href='/rent' className='cursor-pointer hover:opacity-75'>Rent</Link>
-                        <Link href='/dashboard' className='cursor-pointer flex items-center gap-2 bg-blueText py-2 px-3 hover:opacity-75 rounded-lg z-10'>
+                        <Link href={{pathname: '/properties', query: {type: 'purchase'}}} className='cursor-pointer hover:brightness-90'>Purchase</Link>
+                        <Link href={{pathname: '/properties', query: {type: 'rent'}}} className='cursor-pointer hover:brightness-90'>Rent</Link>
+                        <Link href='/dashboard' className='cursor-pointer hover:brightness-90 flex items-center gap-2 bg-blueText py-2 px-3 rounded-lg z-10'>
                             <FaHouseUser />
                             <h1 className='whitespace-nowrap'>Seller Dashboard</h1>
                         </Link>
-                        <div className='flex hover:opacity-50 cursor-pointer items-center gap-2 bg-secondaryText py-2 px-3 rounded-lg ' onClick={() => signOut()}>
+                        <div className='flex cursor-pointer items-center gap-2 bg-secondaryText py-2 px-3 rounded-lg hover:brightness-90' onClick={() => signOut()}>
                             <BiLogOut className='text-lg' />
                             <h1>Logout</h1>
                         </div>
