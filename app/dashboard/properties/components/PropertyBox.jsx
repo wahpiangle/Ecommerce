@@ -5,7 +5,7 @@ import Link from "next/link"
 const PropertyBox = ({id, image, title, price, location, beds, size, listingType }) => {
     return (
         <Link className="flex gap-3 cursor-pointer hover:bg-[#111315] p-4 rounded-xl" href={`properties/${id}`}>
-            <Image src={image[0]|| '/assets/prop-placeholder.png'} alt="property" width={100} height={80} className="rounded-lg" />
+            <Image src={image ? image[0] : '/assets/prop-placeholder.png'} alt="property" width={100} height={80} className="rounded-lg" />
             <p className="bg-primaryText absolute text-primary h-fit rounded-md px-1 text-sm uppercase font-bold ml-1 mt-1">{listingType}</p>
             <div>
                 <div className="p-2 bg-[#111315] font-bold text-sm rounded-lg text-blueText w-fit">$ {price}</div>

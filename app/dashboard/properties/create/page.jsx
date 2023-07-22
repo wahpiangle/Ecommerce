@@ -14,6 +14,7 @@ const page = () => {
   const { register, handleSubmit, formState: { errors }, control } = useForm()
   const [uploaded, setUploaded] = useState([])
   const [images, setImages] = useState([])
+  const [location, setLocation] = useState([])
   const session = useSession();
   const handleUpload = (result) => {
     setUploaded(prev => [...prev, result.info.original_filename])
@@ -21,7 +22,7 @@ const page = () => {
   }
 
   const onSubmit = (data) => {
-    if(!data.title || !data.description || !data.address || !data.type || !data.listingType || !data.price || !data.bedroom || !data.bathroom || !data.size || !data.country) {
+    if (!data.title || !data.description || !data.address || !data.type || !data.listingType || !data.price || !data.bedroom || !data.bathroom || !data.size || !data.country) {
       toast.error('Please fill in all the fields!')
       return
     }
@@ -150,7 +151,7 @@ const page = () => {
               name="country"
               control={control}
               render={({ field }) => (
-                <SelectCountries {...field} ref={null} />
+                <SelectCountries {...field} ref={null}/>
               )}
               rules={{ required: true }}
             />
