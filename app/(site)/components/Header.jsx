@@ -10,7 +10,7 @@ const Header = () => {
     return (
         <div className='flex bg-black gap-12 lg:flex-row flex-col items-center'>
             <div>
-                <h1 className='text-primaryText font-semibold text-6xl font-display sm:text-left text-center'>Modern living for everyone</h1>
+                <h1 className='text-primaryText font-semibold text-6xl font-display sm:text-left text-center p-8'>Modern living for everyone</h1>
                 {/* <div className='text-black flex mt-8 bg-white rounded-t-lg font-semibold w-full sm:justify-start justify-center'>
                     <button className={`hover:text-blueText border-b-[2px] py-3 px-6 flex-1 ${selection === 'purchase' ? 'text-blueText border-blueText' : ''}`} onClick={() => setSelection('purchase')}>Purchase</button>
                     <button className={`hover:text-blueText border-b-[2px] py-3 px-6 flex-1 ${selection === 'rent' ? 'text-blueText border-blueText' : ''}`} onClick={() => setSelection('rent')}>Rent</button>
@@ -38,7 +38,7 @@ const Header = () => {
                 </div> */}
             </div>
             <div className='object-cover'>
-                <Image src='/assets/header.jpg' alt='property' className='rounded-lg' width={380} height={340} />
+                <Image src='/assets/header.jpg' alt='property' className='rounded-lg' width={300} height={250} />
             </div>
         </div>
 

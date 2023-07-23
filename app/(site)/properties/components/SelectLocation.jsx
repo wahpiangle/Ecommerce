@@ -11,12 +11,12 @@ import useCountries from '@/app/actions/useCountries';
 import { MenuItem } from '@mui/material';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
+import Map from './Map';
 
 const SelectLocation = ({ location, setLocation }) => {
     const [open, setOpen] = useState(false);
     const { getAll, getByLabel } = useCountries();
     const allCountries = getAll();
-
     const handleClickOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const handleChange = (event) => setLocation(event.target.value);
@@ -52,6 +52,7 @@ const SelectLocation = ({ location, setLocation }) => {
                         </Select>
                     </FormControl>
                 </DialogContent>
+                <Map location={location}/>
                 <DialogActions>
                     <Button onClick={handleClose}>Close</Button>
                 </DialogActions>
