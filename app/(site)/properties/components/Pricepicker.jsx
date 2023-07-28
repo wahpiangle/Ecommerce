@@ -65,7 +65,7 @@ const Pricepicker = ({ setPrice, defaultPrice, price }) => {
     return (
         <>
             <div className='flex items-center gap-4 mt-1 justify-between cursor-pointer group' onClick={handleClickOpen}>
-                <h1 className='font-bold text-lg whitespace-nowrap'>
+                <h1 className='font-bold text-lg whitespace-nowrap text-white'>
                     ${price[0] >= 1000000 ? price[0]/1000000 + 'M' : price[0] > 1000 ? price[0]/1000 + 'K' : price[0]}
                     {' - '}
                     ${price[1] >= 1000000 ? price[1]/1000000 + 'M' : price[1] > 1000 ? price[1]/1000 + 'K' : price[1]}
@@ -77,7 +77,7 @@ const Pricepicker = ({ setPrice, defaultPrice, price }) => {
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle sx={{display:'flex', alignItems:'center', gap:1}}>
                     Price Range
-                    <ImPriceTag className='text-lg text-black ' />
+                    <ImPriceTag className='text-lg text-white' />
                 </DialogTitle>
                 <DialogContent>
                     <DialogContentText>

@@ -7,8 +7,13 @@ const Datepicker = ({ setDates }) => {
     return (
         <ConfigProvider theme={{
             token:{
-                'colorText': '#000000',
-                'colorTextPlaceholder': '#000000',
+                'colorText': '#FFFFFF',
+                'colorTextPlaceholder': '#FFFFFF',
+                'colorBgBase': '#1A1D1F',
+                'colorIcon': '#FFFFFF',
+                'colorBorder': '#FFFFFF',
+                'colorTextDisabled': '#858585',
+                'controlItemBgActive': '#454545',
             }
         }}>
             <Space direction="vertical" size={12}>

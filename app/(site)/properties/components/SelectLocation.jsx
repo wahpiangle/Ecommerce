@@ -22,10 +22,10 @@ const SelectLocation = ({ location, setLocation }) => {
     const handleChange = (event) => setLocation(event.target.value);
 
     return (
-        <div className='border-r-2 border-[#e1e1e1] px-6 flex-1'>
+        <div className='border-r-2 border-secondaryText px-6 flex-1'>
             <h2 className='text-secondaryText'>Location</h2>
             <div className='flex items-center justify-between gap-4 mt-1 cursor-pointer group' onClick={handleClickOpen}>
-                <h1 className='font-bold text-lg whitespace-nowrap'>
+                <h1 className='font-bold text-lg whitespace-nowrap text-white'>
                     {getByLabel(location) ? getByLabel(location).label + ' ' + getByLabel(location).flag : 'Anywhere'}
                 </h1>
                 <div className="bg-blueText p-2 rounded-full">
@@ -38,7 +38,7 @@ const SelectLocation = ({ location, setLocation }) => {
                     <DialogContentText>
                         Select your desired location
                     </DialogContentText>
-                    <FormControl variant="standard" sx={{ minWidth: 500, my:4 }}>
+                    <FormControl variant="standard" sx={{ minWidth: 500, my:4}}>
                         <InputLabel id="location-select-standard-label">Location</InputLabel>
                         <Select
                             labelId="location-select-standard-label"
