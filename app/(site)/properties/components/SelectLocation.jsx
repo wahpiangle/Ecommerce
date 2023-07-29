@@ -11,7 +11,9 @@ import useCountries from '@/app/actions/useCountries';
 import { MenuItem } from '@mui/material';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
-import Map from './Map';
+import dynamic from 'next/dynamic';
+
+const Map = dynamic(()=> import('./Map'), { ssr: false })
 
 const SelectLocation = ({ location, setLocation }) => {
     const [open, setOpen] = useState(false);

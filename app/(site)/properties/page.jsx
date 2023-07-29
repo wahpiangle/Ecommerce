@@ -7,6 +7,8 @@ import Datepicker from "./components/Datepicker"
 import SelectLocation from "./components/SelectLocation"
 import Pricepicker from "./components/Pricepicker"
 import Typepicker from "./components/Typepicker"
+import PropertyCard from "./components/PropertyCard"
+import { useSession } from "next-auth/react"
 
 const page = () => {
   const searchParams = useSearchParams();
@@ -15,7 +17,76 @@ const page = () => {
   const defaultMaxPrice = 1000000;
   const [price, setPrice] = useState([0, defaultMaxPrice]);
   const [propertyType, setPropertyType] = useState('Landed');
-  
+  const [ userWishList, setUserWishList ] = useState([1,2])
+  const test = [
+    {
+      id: 1,
+      title: 'Test',
+      type: 'Landed',
+      address: 'Test',
+      listingType: 'Rent',
+      rentalPrice: 123,
+      bedroom: 3,
+      bathroom: 2,
+      size:1233,
+      rating: 0,
+      images:[
+        'https://dummyimage.com/200x100'
+      ],
+      facilities: [
+        'Wifi',
+        'Parking'
+      ],
+      booked: false,
+      purchased: false,
+      country:'United Arab Emirates'
+    },
+    {
+      id:2,
+      title: 'Test',
+      type: 'Landed',
+      address: 'Test',
+      listingType: 'Rent',
+      rentalPrice: 123,
+      bedroom: 3,
+      bathroom: 2,
+      size:1233,
+      rating: 0,
+      images:[
+        'https://dummyimage.com/200x100'
+      ],
+      facilities: [
+        'Wifi',
+        'Parking'
+      ],
+      booked: false,
+      purchased: false,
+      country:'United Arab Emirates'
+    },
+    {
+      id: 3,
+      title: 'Test',
+      type: 'Landed',
+      address: 'Test',
+      listingType: 'Rent',
+      rentalPrice: 123,
+      bedroom: 3,
+      bathroom: 2,
+      size:1233,
+      rating: 0,
+      images:[
+        'https://dummyimage.com/200x100'
+      ],
+      facilities: [
+        'Wifi',
+        'Parking'
+      ],
+      booked: false,
+      purchased: false,
+      country:'United Arab Emirates'
+    }
+  ]
+
   let type = searchParams.get('type');
   if (type !== 'purchase' && type !== 'rent') {
     type = 'rent';
@@ -32,7 +103,7 @@ const page = () => {
   }
 
   return (
-    <div className="bg-black">
+    <div className="bg-black min-h-screen">
       <div className="sm:px-32 px-12 py-8">
         <header>
           <h1 className="text-primaryText text-4xl font-display font-medium">Search Properties to {type.charAt(0).toUpperCase() + type.slice(1)}</h1>
@@ -61,6 +132,11 @@ const page = () => {
           <div className='sm:hidden flex items-center my-auto h-[50px] ml-2 bg-blueText flex-1 rounded-lg justify-center w-[50px]'>
             <AiOutlineSearch className='text-2xl text-primaryText' />
           </div>
+        </div>
+        <div className="mt-4 text-white grid grid-cols-2 gap-6 md:grid-cols-3">
+          {test.map((property) => (
+              <PropertyCard key={property.id} property={property} setUserWishList={setUserWishList} userWishList={userWishList} />
+          ))}
         </div>
       </div>
     </div>
