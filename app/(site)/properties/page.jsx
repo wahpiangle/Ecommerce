@@ -5,6 +5,7 @@ import { useState } from "react"
 import PropertyCard from "./components/PropertyCard"
 import PropertyFilter from "./components/PropertyFilter"
 import { useSession } from "next-auth/react"
+import { IoOptionsOutline } from 'react-icons/io5'
 
 const page = () => {
   const searchParams = useSearchParams();
@@ -13,7 +14,7 @@ const page = () => {
   const defaultMaxPrice = 10000000;
   const [price, setPrice] = useState([0, defaultMaxPrice]);
   const [propertyType, setPropertyType] = useState('Any Type');
-  const [ userWishList, setUserWishList ] = useState([1,2])
+  const [userWishList, setUserWishList] = useState([1, 2])
   const test = [
     {
       id: 1,
@@ -24,9 +25,9 @@ const page = () => {
       rentalPrice: 123,
       bedroom: 3,
       bathroom: 2,
-      size:1233,
+      size: 1233,
       rating: 0,
-      images:[
+      images: [
         'https://dummyimage.com/200x100'
       ],
       facilities: [
@@ -35,10 +36,10 @@ const page = () => {
       ],
       booked: false,
       purchased: false,
-      country:'United Arab Emirates'
+      country: 'United Arab Emirates'
     },
     {
-      id:2,
+      id: 2,
       title: 'Test',
       type: 'Landed',
       address: 'Test',
@@ -46,9 +47,9 @@ const page = () => {
       rentalPrice: 123,
       bedroom: 3,
       bathroom: 2,
-      size:1233,
+      size: 1233,
       rating: 0,
-      images:[
+      images: [
         'https://dummyimage.com/200x100'
       ],
       facilities: [
@@ -57,7 +58,7 @@ const page = () => {
       ],
       booked: false,
       purchased: false,
-      country:'United Arab Emirates'
+      country: 'United Arab Emirates'
     },
     {
       id: 3,
@@ -68,9 +69,9 @@ const page = () => {
       rentalPrice: 123,
       bedroom: 3,
       bathroom: 2,
-      size:1233,
+      size: 1233,
       rating: 0,
-      images:[
+      images: [
         'https://dummyimage.com/200x100'
       ],
       facilities: [
@@ -79,7 +80,7 @@ const page = () => {
       ],
       booked: false,
       purchased: false,
-      country:'United Arab Emirates'
+      country: 'United Arab Emirates'
     }
   ]
 
@@ -100,9 +101,13 @@ const page = () => {
 
   return (
     <div className="bg-black min-h-screen">
-      <div className="sm:px-32 px-12 py-8">
-        <header>
+      <div className="lg:px-32 md:px-24 sm:px-12 px-6 py-8">
+        <header className="flex justify-between">
           <h1 className="text-primaryText text-4xl font-display font-medium">Search Properties to {type.charAt(0).toUpperCase() + type.slice(1)}</h1>
+          <div className="flex items-center gap-1 bg-blueText rounded-lg text-primaryText lg:hidden">
+            <IoOptionsOutline className="text-2xl" />
+            <p>Filter</p>
+          </div>
         </header>
         <PropertyFilter
           location={location}
@@ -118,7 +123,7 @@ const page = () => {
 
         <div className="mt-4 text-white grid grid-cols-2 gap-6 md:grid-cols-3">
           {test.map((property) => (
-              <PropertyCard key={property.id} property={property} setUserWishList={setUserWishList} userWishList={userWishList} />
+            <PropertyCard key={property.id} property={property} setUserWishList={setUserWishList} userWishList={userWishList} />
           ))}
         </div>
       </div>
