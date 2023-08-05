@@ -104,7 +104,7 @@ const page = () => {
       <div className="lg:px-32 md:px-24 sm:px-12 px-6 py-8">
         <header className="flex justify-between">
           <h1 className="text-primaryText text-4xl font-display font-medium">Search Properties to {type.charAt(0).toUpperCase() + type.slice(1)}</h1>
-          <div className="flex items-center gap-1 bg-blueText rounded-lg text-primaryText lg:hidden">
+          <div className="flex items-center gap-1 px-4 py-2 bg-blueText rounded-lg text-primaryText lg:hidden">
             <IoOptionsOutline className="text-2xl" />
             <p>Filter</p>
           </div>

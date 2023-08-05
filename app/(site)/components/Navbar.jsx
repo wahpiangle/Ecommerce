@@ -33,7 +33,7 @@ const Navbar = ({ currentUser }) => {
                 <AiOutlineMenu className='text-3xl cursor-pointer text-primaryText items-end' />
             </div>
             {navModal && (
-                <div className='absolute right-0 top-16 mr-2 sm:hidden bg-[#25292c] text-primaryText rounded-lg shadow-lg p-4'>
+                <div className='absolute right-0 top-16 mr-2 lg:hidden bg-[#25292c] text-primaryText rounded-lg shadow-lg p-4'>
                     <div className='flex flex-col justify-center items-center gap-3'>
                         <Link href={{pathname: '/properties', query: {type: 'purchase'}}} className='cursor-pointer hover:brightness-90'>Purchase</Link>
                         <Link href={{pathname: '/properties', query: {type: 'rent'}}} className='cursor-pointer hover:brightness-90'>Rent</Link>
