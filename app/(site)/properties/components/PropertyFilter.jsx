@@ -1,39 +1,80 @@
-import SelectLocation from "./SelectLocation"
-import Pricepicker from "./Pricepicker"
-import Typepicker from "./Typepicker"
-import Datepicker from "./Datepicker"
-import { AiOutlineSearch } from "react-icons/ai"
+import SelectLocation from "./SelectLocation";
+import Pricepicker from "./Pricepicker";
+import Typepicker from "./Typepicker";
+import Datepicker from "./Datepicker";
+import SearchButton from "./SearchButton";
+import { useState } from "react";
+import Button from "@mui/material/Button";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import Fade from "@mui/material/Fade";
+import { IoOptionsOutline } from "react-icons/io5";
 
-const PropertyFilter = ({ location, setLocation, setDates, defaultMaxPrice, price, setPrice, propertyType, setPropertyType, handleSearch }) => {
-    return (
+const PropertyFilter = ({
+  location,
+  setLocation,
+  setDates,
+  defaultMaxPrice,
+  price,
+  setPrice,
+  propertyType,
+  setPropertyType,
+  handleSearch,
+}) => {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  return (
     <>
-        <div className='lg:flex hidden bg-primary rounded-lg min-w-full p-3 mt-4'>
-            <SelectLocation location={location} setLocation={setLocation} />
-            <div className='border-r-2 border-secondaryText px-3 flex-1'>
-                <h2 className='text-secondaryText'>When</h2>
-                <div className='flex items-center justify-between gap-4 mt-1 cursor-pointer group'>
-                    <Datepicker setDates={setDates} />
-                </div>
-            </div>
-            <div className='border-r-2 border-secondaryText px-3 flex-1 '>
-                <h2 className='text-secondaryText'>Price</h2>
-                <Pricepicker defaultMaxPrice={defaultMaxPrice} setPrice={setPrice} price={price} />
-            </div>
-            <div className='border-r-2 border-secondaryText px-3 flex-1 '>
-                <h2 className='text-secondaryText'>Property Type</h2>
-                <Typepicker propertyType={propertyType} setPropertyType={setPropertyType} />
-            </div>
-            <div className="flex items-center pl-2">
-                <button className="text-white bg-blueText rounded-lg px-3 py-2 hover:brightness-90" onClick={handleSearch}>
-                    Search
-                </button>
-            </div>
-            <div className='sm:hidden flex items-center my-auto h-[50px] ml-2 bg-blueText flex-1 rounded-lg justify-center w-[50px]'>
-                <AiOutlineSearch className='text-2xl text-primaryText' />
-            </div>
-        </div>
+      <div className="lg:flex hidden bg-primary rounded-lg min-w-full p-3 mt-4">
+        <SelectLocation location={location} setLocation={setLocation} />
+        <Datepicker setDates={setDates} />
+        <Pricepicker
+          defaultMaxPrice={defaultMaxPrice}
+          setPrice={setPrice}
+          price={price}
+        />
+        <Typepicker
+          propertyType={propertyType}
+          setPropertyType={setPropertyType}
+        />
+        <SearchButton handleSearch={handleSearch} />
+      </div>
+      <div className="lg:hidden">
+        <Button
+          id="fade-button"
+          aria-controls={open ? "fade-menu" : undefined}
+          aria-haspopup="true"
+          aria-expanded={open ? "true" : undefined}
+          onClick={handleClick}
+          sx={{
+            color: "#EFEFEF",
+            borderRadius: "10px",
+            display: "flex",
+            alignItems: "center",
+            gap: "5px",
+            paddingX: "16px",
+            paddingY: "8px",
+          }}
+          style={{ backgroundColor: "#475BE8" }}
+        >
+          <IoOptionsOutline className="text-2xl" />
+          Filter
+        </Button>
+        <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
+          <MenuItem onClick={handleClose}>Profile</MenuItem>
+          <MenuItem onClick={handleClose}>My account</MenuItem>
+          <MenuItem onClick={handleClose}>Logout</MenuItem>
+        </Menu>
+      </div>
     </>
-    )
-}
+  );
+};
 
-export default PropertyFilter
+export default PropertyFilter;

@@ -13,7 +13,7 @@ const PropertyCard = ({ property, setUserWishList, userWishList }) => {
         }
     }
     return (
-        <div className="rounded-lg flex flex-col flex-1 justify-center">
+        <div className="rounded-lg flex flex-col justify-center flex-initial">
             <Link href={`/properties/${property.id}`}>
                 <img src={property.images[0]} alt={property.title} className="rounded-t-lg w-full h-full" />
             </Link>
@@ -42,7 +42,7 @@ const PropertyCard = ({ property, setUserWishList, userWishList }) => {
                     <p>{property.address},</p>
                     <p>{property.country}</p>
                 </div>
-                <div className='flex text-secondaryText text-sm gap-2 border-t border-secondaryText mt-2 py-2'>
+                <div className='flex text-secondaryText text-sm gap-2 border-t border-secondaryText mt-2 py-2 w-full'>
                     <div className='flex gap-2 items-center whitespace-nowrap'>
                         <LuBedDouble className='text-xl text-blueText' />
                         <p>{property.bedroom} Beds</p>

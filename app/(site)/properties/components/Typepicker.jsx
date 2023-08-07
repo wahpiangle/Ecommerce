@@ -16,8 +16,10 @@ const Typepicker = ({ propertyType, setPropertyType }) => {
     const handleChange = (event) => {
         setPropertyType(event.target.value);
     }
+
     return (
-        <>
+        <div className='border-r-2 border-secondaryText px-3 flex-1 '>
+            <h2 className='text-secondaryText'>Property Type</h2>
             <div className='flex items-center gap-4 mt-1 justify-between cursor-pointer group' onClick={handleClickOpen}>
                 <h1 className='font-bold text-lg whitespace-nowrap text-white'>{propertyType}</h1>
                 <div className="bg-blueText p-2 rounded-full">
@@ -27,7 +29,7 @@ const Typepicker = ({ propertyType, setPropertyType }) => {
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                     Select Property Type
-                    <BsHouseGearFill className='text-2xl'/>
+                    <BsHouseGearFill className='text-2xl' />
                 </DialogTitle>
                 <DialogContent>
                     <DialogContentText>
@@ -53,7 +55,8 @@ const Typepicker = ({ propertyType, setPropertyType }) => {
                     <Button onClick={handleClose}>Close</Button>
                 </DialogActions>
             </Dialog>
-        </>
+        </div>
+
     )
 }
 

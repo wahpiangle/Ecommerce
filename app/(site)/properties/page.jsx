@@ -101,27 +101,23 @@ const page = () => {
 
   return (
     <div className="bg-black min-h-screen">
-      <div className="lg:px-32 md:px-24 sm:px-12 px-6 py-8">
-        <header className="flex justify-between">
+      <div className="lg:px-32 md:px-24 sm:px-12 px-10 py-8">
+        <div className="flex flex-wrap justify-between items-center">
           <h1 className="text-primaryText text-4xl font-display font-medium">Search Properties to {type.charAt(0).toUpperCase() + type.slice(1)}</h1>
-          <div className="flex items-center gap-1 px-4 py-2 bg-blueText rounded-lg text-primaryText lg:hidden">
-            <IoOptionsOutline className="text-2xl" />
-            <p>Filter</p>
-          </div>
-        </header>
-        <PropertyFilter
-          location={location}
-          setLocation={setLocation}
-          setDates={setDates}
-          defaultMaxPrice={defaultMaxPrice}
-          price={price}
-          setPrice={setPrice}
-          propertyType={propertyType}
-          setPropertyType={setPropertyType}
-          handleSearch={handleSearch}
-        />
+          <PropertyFilter
+            location={location}
+            setLocation={setLocation}
+            setDates={setDates}
+            defaultMaxPrice={defaultMaxPrice}
+            price={price}
+            setPrice={setPrice}
+            propertyType={propertyType}
+            setPropertyType={setPropertyType}
+            handleSearch={handleSearch}
+          />
+        </div>
 
-        <div className="mt-4 text-white grid grid-cols-2 gap-6 md:grid-cols-3">
+        <div className="mt-4 text-white flex flex-wrap gap-6 justify-center">
           {test.map((property) => (
             <PropertyCard key={property.id} property={property} setUserWishList={setUserWishList} userWishList={userWishList} />
           ))}
