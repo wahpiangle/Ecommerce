@@ -54,7 +54,7 @@ function AirbnbThumbComponent(props) {
     );
 }
 
-const Pricepicker = ({ setPrice, price, defaultMaxPrice }) => {
+const Pricepicker = ({ setPrice, price, defaultMaxPrice, isWideScreen }) => {
     const [open, setOpen] = useState(false);
     const handleClickOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -68,7 +68,7 @@ const Pricepicker = ({ setPrice, price, defaultMaxPrice }) => {
         setPrice([price[0], Number(event.target.value)]);
     }
     return (
-        <div className='border-r-2 border-secondaryText px-3 flex-1 '>
+        <div className={`${isWideScreen ? 'border-r-2' : 'border-b-2'} border-secondaryText px-3 flex-1 `}>
                 <h2 className='text-secondaryText'>Price</h2>
             <div className='flex items-center gap-4 mt-1 justify-between cursor-pointer group' onClick={handleClickOpen}>
                 <h1 className='font-bold text-lg whitespace-nowrap text-white'>

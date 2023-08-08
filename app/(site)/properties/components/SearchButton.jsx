@@ -1,6 +1,6 @@
 import { AiOutlineSearch } from "react-icons/ai"
 
-const SearchButton = ({ handleSearch }) => {
+const SearchButton = ({ handleSearch, isWideScreen }) => {
     return (
         <>
             <div className="flex items-center pl-2">

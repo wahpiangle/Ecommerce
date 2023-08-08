@@ -9,7 +9,7 @@ import Select from '@mui/material/Select'
 import OutlinedInput from '@mui/material/OutlinedInput'
 import MenuItem from '@mui/material/MenuItem'
 
-const Typepicker = ({ propertyType, setPropertyType }) => {
+const Typepicker = ({ propertyType, setPropertyType, isWideScreen }) => {
     const [open, setOpen] = useState(false);
     const handleClickOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -18,7 +18,7 @@ const Typepicker = ({ propertyType, setPropertyType }) => {
     }
 
     return (
-        <div className='border-r-2 border-secondaryText px-3 flex-1 '>
+        <div className={`${isWideScreen? 'border-r-2' : 'border-b-2'} border-secondaryText px-3 flex-1`}>
             <h2 className='text-secondaryText'>Property Type</h2>
             <div className='flex items-center gap-4 mt-1 justify-between cursor-pointer group' onClick={handleClickOpen}>
                 <h1 className='font-bold text-lg whitespace-nowrap text-white'>{propertyType}</h1>

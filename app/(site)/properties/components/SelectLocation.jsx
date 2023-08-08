@@ -15,7 +15,7 @@ import dynamic from 'next/dynamic';
 
 const Map = dynamic(()=> import('./Map'), { ssr: false })
 
-const SelectLocation = ({ location, setLocation }) => {
+const SelectLocation = ({ location, setLocation, isWideScreen }) => {
     const [open, setOpen] = useState(false);
     const { getAll, getByLabel } = useCountries();
     const allCountries = getAll();
@@ -24,7 +24,7 @@ const SelectLocation = ({ location, setLocation }) => {
     const handleChange = (event) => setLocation(event.target.value);
 
     return (
-        <div className='border-r-2 border-secondaryText px-6 flex-1'>
+        <div className={`${isWideScreen ? 'border-r-2': 'border-b-2'} border-secondaryText px-6 flex-1`}>
             <h2 className='text-secondaryText'>Location</h2>
             <div className='flex items-center justify-between gap-4 mt-1 cursor-pointer group' onClick={handleClickOpen}>
                 <h1 className='font-bold text-lg whitespace-nowrap text-white'>

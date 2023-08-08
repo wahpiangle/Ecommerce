@@ -3,9 +3,9 @@ import { ConfigProvider } from 'antd';
 
 const { RangePicker } = DatePicker;
 
-const Datepicker = ({ setDates }) => {
+const Datepicker = ({ setDates, isWideScreen }) => {
     return (
-        <div className='border-r-2 border-secondaryText px-3 flex-1'>
+        <div className={`${isWideScreen? 'border-r-2': 'border-b-2'} border-secondaryText px-3 flex-1`}>
             <h2 className='text-secondaryText'>When</h2>
             <div className='flex items-center justify-between gap-4 mt-1 cursor-pointer group'>
                 <ConfigProvider theme={{

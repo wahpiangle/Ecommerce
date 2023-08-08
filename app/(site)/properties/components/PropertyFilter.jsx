@@ -33,18 +33,24 @@ const PropertyFilter = ({
   return (
     <>
       <div className="lg:flex hidden bg-primary rounded-lg min-w-full p-3 mt-4">
-        <SelectLocation location={location} setLocation={setLocation} />
-        <Datepicker setDates={setDates} />
+        <SelectLocation
+          location={location}
+          setLocation={setLocation}
+          isWideScreen={true}
+        />
+        <Datepicker setDates={setDates} isWideScreen={true} />
         <Pricepicker
           defaultMaxPrice={defaultMaxPrice}
           setPrice={setPrice}
           price={price}
+          isWideScreen={true}
         />
         <Typepicker
           propertyType={propertyType}
           setPropertyType={setPropertyType}
+          isWideScreen={true}
         />
-        <SearchButton handleSearch={handleSearch} />
+        <SearchButton handleSearch={handleSearch} isWideScreen={true} />
       </div>
       <div className="lg:hidden">
         <Button
@@ -68,11 +74,37 @@ const PropertyFilter = ({
           Filter
         </Button>
         <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
-          <MenuItem onClick={handleClose}>Profile</MenuItem>
-          <MenuItem onClick={handleClose}>My account</MenuItem>
-          <MenuItem onClick={handleClose}>Logout</MenuItem>
+          <MenuItem>
+            <SelectLocation
+              location={location}
+              setLocation={setLocation}
+              isWideScreen={false}
+            />
+          </MenuItem>
+          <MenuItem>
+            <Datepicker setDates={setDates} isWideScreen={false} />
+          </MenuItem>
+          <MenuItem>
+            <Pricepicker
+              defaultMaxPrice={defaultMaxPrice}
+              setPrice={setPrice}
+              price={price}
+              isWideScreen={false}
+            />
+          </MenuItem>
+          <MenuItem>
+            <Typepicker
+              propertyType={propertyType}
+              setPropertyType={setPropertyType}
+              isWideScreen={false}
+            />
+          </MenuItem>
+          <MenuItem>
+            <SearchButton handleSearch={handleSearch} isWideScreen={false} />
+          </MenuItem>
         </Menu>
       </div>
+
     </>
   );
 };
