@@ -18,7 +18,7 @@ const Typepicker = ({ propertyType, setPropertyType, isWideScreen }) => {
     }
 
     return (
-        <div className={`${isWideScreen? 'border-r-2' : 'border-b-2'} border-secondaryText px-3 flex-1`}>
+        <div className={`${isWideScreen? 'border-r-2' : 'border-b-2 pb-4'} border-secondaryText px-3 flex-1`}>
             <h2 className='text-secondaryText'>Property Type</h2>
             <div className='flex items-center gap-4 mt-1 justify-between cursor-pointer group' onClick={handleClickOpen}>
                 <h1 className='font-bold text-lg whitespace-nowrap text-white'>{propertyType}</h1>

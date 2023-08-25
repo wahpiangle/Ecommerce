@@ -2,6 +2,7 @@ import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
 import { LuBedDouble } from 'react-icons/lu'
 import { BiBath, BiArea } from 'react-icons/bi'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const PropertyCard = ({ property, setUserWishList, userWishList }) => {
     const handleWishListClick = () => {
@@ -15,7 +16,7 @@ const PropertyCard = ({ property, setUserWishList, userWishList }) => {
     return (
         <div className="rounded-lg flex flex-col justify-center flex-initial">
             <Link href={`/properties/${property.id}`}>
-                <img src={property.images[0]} alt={property.title} className="rounded-t-lg w-full h-full" />
+                <Image src={property.images[0]} alt={property.title} className="rounded-t-lg" width={600} height={800} />
             </Link>
             <div className="flex flex-col gap-1 text-white bg-primary p-3 rounded-b-lg">
                 <div className='flex justify-between items-center'>

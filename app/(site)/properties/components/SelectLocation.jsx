@@ -24,7 +24,7 @@ const SelectLocation = ({ location, setLocation, isWideScreen }) => {
     const handleChange = (event) => setLocation(event.target.value);
 
     return (
-        <div className={`${isWideScreen ? 'border-r-2': 'border-b-2'} border-secondaryText px-6 flex-1`}>
+        <div className={`${isWideScreen ? 'border-r-2': 'border-b-2 pb-4'} border-secondaryText px-6 flex-1`}>
             <h2 className='text-secondaryText'>Location</h2>
             <div className='flex items-center justify-between gap-4 mt-1 cursor-pointer group' onClick={handleClickOpen}>
                 <h1 className='font-bold text-lg whitespace-nowrap text-white'>

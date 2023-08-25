@@ -117,7 +117,7 @@ const page = () => {
           />
         </div>
 
-        <div className="mt-4 text-white flex flex-wrap gap-6 justify-center">
+        <div className="mt-4 text-white grid gap-8 justify-start 2xl:grid-cols-4 xl:grid-cols-3 sm:grid-cols-2">
           {test.map((property) => (
             <PropertyCard key={property.id} property={property} setUserWishList={setUserWishList} userWishList={userWishList} />
           ))}

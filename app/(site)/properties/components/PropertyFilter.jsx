@@ -9,6 +9,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Fade from "@mui/material/Fade";
 import { IoOptionsOutline } from "react-icons/io5";
+import { Box, createTheme } from "@mui/material";
 
 const PropertyFilter = ({
   location,
@@ -73,7 +74,12 @@ const PropertyFilter = ({
           <IoOptionsOutline className="text-2xl" />
           Filter
         </Button>
-        <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
+        <Menu
+          anchorEl={anchorEl}
+          open={open}
+          onClose={handleClose}
+          sx={{ "& .MuiMenu-paper": { backgroundColor: "#1A1D1F" } }}
+        >
           <MenuItem>
             <SelectLocation
               location={location}
@@ -99,12 +105,30 @@ const PropertyFilter = ({
               isWideScreen={false}
             />
           </MenuItem>
-          <MenuItem>
-            <SearchButton handleSearch={handleSearch} isWideScreen={false} />
-          </MenuItem>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              paddingX: "1rem",
+              gap: "2rem",
+              marginY: "1rem",
+            }}
+          >
+            <button
+              className="text-white font-semibold bg-blueText rounded-lg px-3 py-3 text-lg hover:brightness-90 flex-1"
+              onClick={handleSearch}
+            >
+              Search
+            </button>
+            <button
+              className="text-white font-semibold bg-secondaryText rounded-lg px-3 py-3 text-lg hover:brightness-90 flex-1"
+              onClick={handleClose}
+            >
+              Close
+            </button>
+          </Box>
         </Menu>
       </div>
-
     </>
   );
 };
