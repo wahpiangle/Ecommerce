@@ -7,7 +7,6 @@ const Datepicker = ({ setDates, isWideScreen }) => {
     let disabledDate = (current) => {
         return current && current < moment().endOf('day').subtract(1, 'days');
     }
-    if (typeof window !== 'undefined') { window.addEventListener('DOMContentLoaded', () => { document.getElementById('holderStyle').remove(); }) }
 
     return (
         <div className={`${isWideScreen ? 'border-r-2' : 'border-b-2 pb-4'} border-secondaryText px-3 flex-1`}>

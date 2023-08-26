@@ -10,10 +10,24 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+        <head>
+          {typeof window === 'undefined' && (
+            <style
+              id="holderStyle"
+              dangerouslySetInnerHTML={{
+                __html: `
+          *, *::before, *::after {
+            transition: none!important;
+          }
+          `,
+              }}
+            />
+          )}
+        </head>
       <body>
         <AuthContext>
-            <ToasterContext />
-            {children}
+          <ToasterContext />
+          {children}
         </AuthContext>
       </body>
     </html>
