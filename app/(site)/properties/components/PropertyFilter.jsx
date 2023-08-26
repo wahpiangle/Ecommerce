@@ -7,9 +7,9 @@ import { useState } from "react";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import Fade from "@mui/material/Fade";
 import { IoOptionsOutline } from "react-icons/io5";
-import { Box, createTheme } from "@mui/material";
+import { Box } from "@mui/material";
+import Facilitiespicker from "./Facilitiespicker";
 
 const PropertyFilter = ({
   location,
@@ -18,6 +18,8 @@ const PropertyFilter = ({
   defaultMaxPrice,
   price,
   setPrice,
+  facilities,
+  setFacilities,
   propertyType,
   setPropertyType,
   handleSearch,
@@ -33,7 +35,7 @@ const PropertyFilter = ({
 
   return (
     <>
-      <div className="lg:flex hidden bg-primary rounded-lg min-w-full p-3 mt-4">
+      <div className="lg:flex hidden bg-primary rounded-lg min-w-full py-3 mt-4">
         <SelectLocation
           location={location}
           setLocation={setLocation}
@@ -49,6 +51,11 @@ const PropertyFilter = ({
         <Typepicker
           propertyType={propertyType}
           setPropertyType={setPropertyType}
+          isWideScreen={true}
+        />
+        <Facilitiespicker
+          facilities={facilities}
+          setFacilities={setFacilities}
           isWideScreen={true}
         />
         <SearchButton handleSearch={handleSearch} isWideScreen={true} />
@@ -100,6 +107,13 @@ const PropertyFilter = ({
           </MenuItem>
           <MenuItem>
             <Typepicker
+              propertyType={propertyType}
+              setPropertyType={setPropertyType}
+              isWideScreen={false}
+            />
+          </MenuItem>
+          <MenuItem>
+            <Facilitiespicker
               propertyType={propertyType}
               setPropertyType={setPropertyType}
               isWideScreen={false}

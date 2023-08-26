@@ -1,0 +1,2 @@
+api/property - dashboard
+api/properties - purchase/rent view

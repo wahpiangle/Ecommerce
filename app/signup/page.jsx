@@ -90,7 +90,7 @@ const Signup = () => {
 
   return (
     <div className='bg-primary min-h-screen'>
-      <Link className='absolute ml-2 mt-2' href='/'>
+      <Link className='absolute ml-4 my-4' href='/'>
         <Image
           src='/assets/logo-updated.png'
           width={200}
@@ -142,6 +142,7 @@ const Signup = () => {
             src='/assets/signup-building.jpg'
             fill='true'
             alt='Skyscraper'
+            sizes='auto'
           />
         </div>
       </div>

@@ -6,6 +6,8 @@ import PropertyCard from "./components/PropertyCard"
 import PropertyFilter from "./components/PropertyFilter"
 import { useSession } from "next-auth/react"
 import { IoOptionsOutline } from 'react-icons/io5'
+import useSWR from "swr"
+import axios from "axios"
 
 const page = () => {
   const searchParams = useSearchParams();
@@ -14,7 +16,19 @@ const page = () => {
   const defaultMaxPrice = 10000000;
   const [price, setPrice] = useState([0, defaultMaxPrice]);
   const [propertyType, setPropertyType] = useState('Any Type');
+  const [facilities, setFacilities] = useState([]);
   const [userWishList, setUserWishList] = useState([1, 2])
+  let type = searchParams.get('type');
+  if (type !== 'purchase' && type !== 'rent') {
+    type = 'rent';
+  }
+
+  const propertiesFetcher = async(url) =>{
+    const response = await axios.get(url).then(res => res.data)
+    return response
+  }
+  const {data, isLoading, error} = useSWR(`/api/properties/${type}`, propertiesFetcher);
+
   const test = [
     {
       id: 1,
@@ -84,14 +98,11 @@ const page = () => {
     }
   ]
 
-  let type = searchParams.get('type');
-  if (type !== 'purchase' && type !== 'rent') {
-    type = 'rent';
-  }
 
   const handleSearch = () => {
     //TODO setup api endpoint to search for properties
     console.log({
+      type,
       dates,
       location,
       price,
@@ -110,6 +121,8 @@ const page = () => {
             setDates={setDates}
             defaultMaxPrice={defaultMaxPrice}
             price={price}
+            facilities={facilities}
+            setFacilities={setFacilities}
             setPrice={setPrice}
             propertyType={propertyType}
             setPropertyType={setPropertyType}
@@ -117,7 +130,7 @@ const page = () => {
           />
         </div>
 
-        <div className="mt-4 text-white grid gap-8 justify-start 2xl:grid-cols-4 xl:grid-cols-3 sm:grid-cols-2">
+        <div className="mt-6 text-white grid gap-8 justify-start 2xl:grid-cols-4 xl:grid-cols-3 sm:grid-cols-2">
           {test.map((property) => (
             <PropertyCard key={property.id} property={property} setUserWishList={setUserWishList} userWishList={userWishList} />
           ))}
