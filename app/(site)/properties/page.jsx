@@ -23,13 +23,14 @@ const page = () => {
     type = 'rent';
   }
 
+
   const propertiesFetcher = async(url) =>{
     const response = await axios.get(url).then(res => res.data)
     return response
   }
   const {data, isLoading, error} = useSWR(`/api/properties/${type}`, propertiesFetcher);
 
-  const test = [
+  const properties = [
     {
       id: 1,
       title: 'Test',
@@ -130,8 +131,19 @@ const page = () => {
           />
         </div>
 
-        <div className="mt-6 text-white grid gap-8 justify-start 2xl:grid-cols-4 xl:grid-cols-3 sm:grid-cols-2">
-          {test.map((property) => (
+        <div
+        className={
+          `mt-6
+          text-white
+          grid
+          gap-8
+          justify-start
+          2xl:grid-cols-4
+          xl:grid-cols-3
+          sm:grid-cols-2
+          `
+          }>
+          {properties.map((property) => (
             <PropertyCard key={property.id} property={property} setUserWishList={setUserWishList} userWishList={userWishList} />
           ))}
         </div>
