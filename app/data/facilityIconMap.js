@@ -19,3 +19,11 @@ export const facilities =[
     {label: 'Parking', value: 'Parking'},
     {label: 'Pool', value: 'Pool'}
 ]
+
+export const facilityOptions = [
+    'Baths',
+    'Kitchen',
+    'Wifi',
+    'Parking',
+    'Pool',
+]

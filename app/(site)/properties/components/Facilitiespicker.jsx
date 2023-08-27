@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material'
+import { Checkbox, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material'
 import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
 import FormControl from '@mui/material/FormControl'
@@ -7,7 +7,7 @@ import InputLabel from '@mui/material/InputLabel'
 import Select from '@mui/material/Select'
 import OutlinedInput from '@mui/material/OutlinedInput'
 import MenuItem from '@mui/material/MenuItem'
-import { facilityIconMap, facilities } from '@/app/data/facilityIconMap'
+import { facilityIconMap, facilityOptions } from '@/app/data/facilityIconMap'
 import { BsChevronDown } from 'react-icons/bs'
 import { FaCouch } from 'react-icons/fa'
 
@@ -17,14 +17,24 @@ const Facilitiespicker = ({ facilities, setFacilities, isWideScreen }) => {
     const handleClickOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const handleChange = (event) => {
-        console.log(event.target.value)
+        const {
+            target: { value },
+        } = event;
+        setFacilities(
+            typeof value === 'string' ? value.split(',') : value,
+        );
     }
 
     return (
-        <div className={`${isWideScreen ? 'border-r-2' : 'border-b-2 pb-4'} border-secondaryText px-3 flex-1`}>
-            <h2 className='text-secondaryText'>Property Type</h2>
+        <div className={`${isWideScreen ? 'border-r-2' : 'pb-4'} border-secondaryText px-3 flex-1`}>
+            <h2 className='text-secondaryText'>Facilities</h2>
             <div className='flex items-center gap-4 mt-1 justify-between cursor-pointer group' onClick={handleClickOpen}>
-                <h1 className='font-bold text-lg whitespace-nowrap text-white'>test</h1>
+                <h1 className='font-bold text-lg text-white flex truncate gap-2 max-w-full overflow-clip'>
+                    {facilities.length > 0 ?
+                        facilities.length + ' Facilities Selected'
+                        : 'Select Facilities'
+                    }
+                </h1>
                 <div className="bg-blueText p-2 rounded-full">
                     <BsChevronDown className='text-lg text-white group-hover:brightness-90' />
                 </div>
@@ -40,7 +50,30 @@ const Facilitiespicker = ({ facilities, setFacilities, isWideScreen }) => {
                     </DialogContentText>
                     <Box sx={{ width: 400, mt: 2, display: 'flex' }}>
                         <FormControl sx={{ m: 1, minWidth: 120 }}>
-                            {/* TODO: select component checkmarks */}
+                            <InputLabel id="checkbox-label">Facilities</InputLabel>
+                            <Select
+                                labelId="checkbox-label"
+                                id="facilities-checkbox"
+                                multiple
+                                value={facilities}
+                                onChange={handleChange}
+                                input={<OutlinedInput label="Facilities" />}
+                                renderValue={(selected) => selected.join(', ')}
+                            >
+                                {
+                                    facilityOptions.map((facility, index) => {
+                                        return (
+                                            <MenuItem key={index} value={facility}>
+                                                <Checkbox checked={facilities.indexOf(facility) > -1} />
+                                                <div className='flex gap-2 items-center ml-1'>
+                                                    {facility}
+                                                    {facilityIconMap[facility]}
+                                                </div>
+                                            </MenuItem>
+                                        )
+                                    })
+                                }
+                            </Select>
                         </FormControl>
                     </Box>
                 </DialogContent>

@@ -35,7 +35,7 @@ const PropertyFilter = ({
 
   return (
     <>
-      <div className="lg:flex hidden bg-primary rounded-lg min-w-full py-3 mt-4">
+      <div className="xl:flex hidden bg-primary rounded-lg min-w-full py-3 mt-4">
         <SelectLocation
           location={location}
           setLocation={setLocation}
@@ -60,7 +60,7 @@ const PropertyFilter = ({
         />
         <SearchButton handleSearch={handleSearch} isWideScreen={true} />
       </div>
-      <div className="lg:hidden">
+      <div className="xl:hidden sm:mt-0 mt-4">
         <Button
           id="fade-button"
           aria-controls={open ? "fade-menu" : undefined}
@@ -114,8 +114,8 @@ const PropertyFilter = ({
           </MenuItem>
           <MenuItem>
             <Facilitiespicker
-              propertyType={propertyType}
-              setPropertyType={setPropertyType}
+              facilities={facilities}
+              setFacilities={setFacilities}
               isWideScreen={false}
             />
           </MenuItem>
