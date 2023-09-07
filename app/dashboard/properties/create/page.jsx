@@ -22,7 +22,7 @@ const page = () => {
   }
 
   const onSubmit = (data) => {
-    if (!data.title || !data.description || !data.address || !data.type || !data.listingType || !data.price || !data.bedroom || !data.bathroom || !data.size || !data.country) {
+    if (!data.title || !data.description || !data.address || !data.type || !data.listingType || !data.price || !data.bedroom || !data.bathroom || !data.size || !data.country || !data.address) {
       toast.error('Please fill in all the fields!')
       return
     }
@@ -40,6 +40,7 @@ const page = () => {
       images: images,
       country: data.country,
       userEmail: session.data.user.email,
+      address: data.address
     }).then(res => {
       toast.success('Property Added!')
     }).catch(err => {
@@ -151,10 +152,13 @@ const page = () => {
               name="country"
               control={control}
               render={({ field }) => (
-                <SelectCountries {...field} ref={null}/>
+                <SelectCountries {...field} ref={null} />
               )}
               rules={{ required: true }}
             />
+          </div>
+          <div className="mt-3 flex flex-col gap-2">
+            {/* TODO build mapbox api autosuggest here */}
           </div>
           <button type="submit" className="cursor-pointer px-3 py-2 bg-blueText rounded-lg mt-3 hover:brightness-75">Add Property</button>
         </form>
