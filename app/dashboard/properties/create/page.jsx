@@ -9,6 +9,7 @@ import SelectCountries from "./components/SelectCountries"
 import { toast } from "react-hot-toast"
 import { useSession } from "next-auth/react"
 import Link from "next/link"
+import SelectAddress from "./components/SelectAddress"
 
 const page = () => {
   const { register, handleSubmit, formState: { errors }, control } = useForm()
@@ -158,7 +159,7 @@ const page = () => {
             />
           </div>
           <div className="mt-3 flex flex-col gap-2">
-            {/* TODO build mapbox api autosuggest here */}
+            <SelectAddress/>
           </div>
           <button type="submit" className="cursor-pointer px-3 py-2 bg-blueText rounded-lg mt-3 hover:brightness-75">Add Property</button>
         </form>
