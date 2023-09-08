@@ -21,6 +21,10 @@ export async function POST(request){
             return new NextResponse('Unauthorized', {status: 401});
         }
 
+        const geocode = await fetch('https://maps.googleapis.com/maps/api/geocode/json?place_id='+address.place_id+'&key='+process.env.GOOGLE_MAPS);
+        const geocodeData = await geocode.json();
+        const geocodeLocation = geocodeData.results[0] || null;
+
         if(listingType === 'Rent' && listingType !== 'Sale'){
             const property = await prisma.property.create({
                 data: {
@@ -35,6 +39,7 @@ export async function POST(request){
                     bedroom: parseInt(bedroom),
                     listingType,
                     images,
+                    geocode: geocodeLocation,
                     country: country.label,
                     size: parseInt(size),
                     owner: {
@@ -70,6 +75,7 @@ export async function POST(request){
                     salePrice: parseFloat(price),
                     facilities,
                     address,
+                    geocode: geocodeLocation,
                     bathroom: parseInt(bathroom),
                     bedroom: parseInt(bedroom),
                     listingType,

@@ -75,6 +75,9 @@ const page = () => {
             </div>
           </>
         }
+        {
+          filteredResult.length === 0 && !isLoading && !error && <p className='text-primaryText text-center my-4'>No properties found.</p>
+        }
       </div>
       <ReactPaginate
         onPageChange={handlePageClick}

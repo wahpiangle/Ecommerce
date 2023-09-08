@@ -12,6 +12,7 @@ const SelectCountries = ({ ...field }) => {
       borderRadius: '8px',
       placeholder: '#EFEFEF',
       width: '100%',
+      color: '#EFEFEF',
     }),
     option: (styles) => {
       return {
@@ -30,19 +31,23 @@ const SelectCountries = ({ ...field }) => {
         }
       };
     },
+    input: (styles) => ({
+      ...styles,
+      color: '#EFEFEF',
+    }),
     menu: base => ({
       ...base,
       backgroundColor: '#1A1D1F',
-      color: '#6F767E',
+      color: '#EFEFEF',
     }),
     singleValue: (styles) =>({
       ...styles,
-      color: '#6F767E'
+      color: '#EFEFEF'
     })
   }
   return (
     <div className="flex-1">
-      <label htmlFor="images" className="text-lg">Select Location</label>
+      <label htmlFor="location" className="text-lg">Select Country</label>
       <Select
         placeholder="Anywhere"
         isClearable
@@ -51,10 +56,11 @@ const SelectCountries = ({ ...field }) => {
         styles={colorStyles}
         menuPlacement='bottom'
         menuPosition='fixed'
+        id="location"
         formatOptionLabel={(option) => (
           <div className="flex items-center gap-3">
             <div>{option.flag}</div>
-            <div>
+            <div className="text-primaryText">
               {option.label},
               <span className="ml-1">
                 {option.region}

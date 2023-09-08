@@ -16,7 +16,6 @@ const page = () => {
   const { register, handleSubmit, formState: { errors }, control } = useForm()
   const [uploaded, setUploaded] = useState([])
   const [images, setImages] = useState([])
-  const [location, setLocation] = useState([])
   const session = useSession();
   const handleUpload = (result) => {
     setUploaded(prev => [...prev, result.info.original_filename])
@@ -68,9 +67,13 @@ const page = () => {
             <label htmlFor="description" className="text-lg">Enter Description</label>
             <textarea id="description" {...register("description", { required: true })} className="px-2 py-3 h-[100px] resize-none focus:outline-none rounded-lg bg-primary border-[1px] border-secondaryText" placeholder="Description" />
           </div>
-          <div className="flex flex-col gap-2">
-            <label htmlFor="address" className="text-lg">Enter Address</label>
-            <input type="text" id="address" {...register("address", { required: true })} className="px-2 py-3 focus:outline-none rounded-lg bg-primary border-[1px] border-secondaryText" placeholder="Property Address" />
+          <div className="mt-3 flex flex-col gap-2">
+            <Controller
+            render={({ field: { onChange, value } }) =>(
+              <GoogleMaps onChange={onChange} _value={value} />
+            )}
+            name="address"
+            control={control} />
           </div>
           <div className="flex mt-3 gap-6 items-center">
             <div className="flex flex-1 flex-col gap-2">
@@ -159,9 +162,7 @@ const page = () => {
               rules={{ required: true }}
             />
           </div>
-          <div className="mt-6 flex flex-col gap-2">
-            <GoogleMaps/>
-          </div>
+
           <button type="submit" className="cursor-pointer px-3 py-2 bg-blueText rounded-lg mt-3 hover:brightness-75">Add Property</button>
         </form>
       </div>

@@ -4,7 +4,7 @@ import { useParams } from 'next/navigation'
 import Image from 'next/image'
 import { Carousel } from 'react-responsive-carousel'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { BiMapPin } from 'react-icons/bi'
+import { BiBath, BiMapPin } from 'react-icons/bi'
 import { Rating } from '@mui/material'
 import { BiBed } from 'react-icons/bi'
 import { BsSlashSquare, BsThreeDots } from 'react-icons/bs'
@@ -14,7 +14,7 @@ import FacilityItem from './components/FacilityItem'
 import Loader from '@/app/components/Loader'
 import useSWR from 'swr'
 import axios from 'axios'
-//TODO map & agent component
+
 const page = () => {
   const { id } = useParams()
 
@@ -67,6 +67,11 @@ const page = () => {
                         <p>{data.bedroom} Beds</p>
                       </div>
                       <div className="flex items-center text-primaryText gap-1 text-sm whitespace-nowrap">
+                        <BiBath />
+                        <p>{data.bathroom} Bathrooms</p>
+                      </div>
+
+                      <div className="flex items-center text-primaryText gap-1 text-sm whitespace-nowrap">
                         <BsSlashSquare />
                         <p>{data.size} sqft</p>
                       </div>
@@ -105,7 +110,7 @@ const page = () => {
                   <h1 className='text-xl mt-2'>{data.agent || "No Agent Assigned"}</h1>
                   <p className='mt-2 text-secondaryText'>{data.contact || ""}</p>
                 </div>
-                <Map location={data.country}/>
+                <Map location={data.geocode}/>
               </div>
             </div>
           </div>}

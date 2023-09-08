@@ -14,8 +14,15 @@ L.Icon.Default.mergeOptions({
 })
 
 const Map = ({location}) => {
-    const { getByLabel } = useCountries()
-    const center = getByLabel(location).latlng;
+    let center;
+    if(!location?.geometry){
+        const { getByLabel } = useCountries()
+        center = getByLabel(location).latlng; //array [1,2]
+    }else{
+        const {lat, lng} = location?.geometry?.location
+        center = [lat, lng]
+    }
+
     return (
         <MapContainer
             center={center || [51, -0.09]}
