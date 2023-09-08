@@ -9,7 +9,7 @@ import Link from 'next/link'
 
 const User = ({ currentUser }) => {
     return (
-        <Menu as="div" className="relative flex text-left flex-1 justify-end ">
+        <Menu as="div" className="relative flex text-left flex-1 justify-end">
             <div>
                 <Menu.Button className="flex items-center gap-2 w-full justify-center rounded-md px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none">
                     <Image src={currentUser?.image || '/assets/placeholder.png'} width={40} height={40} className='rounded-full' alt='user-image' />
@@ -50,7 +50,6 @@ const User = ({ currentUser }) => {
                                 </div>
                             )}
                         </Menu.Item>
-
                     </div>
                 </Menu.Items>
             </Transition>

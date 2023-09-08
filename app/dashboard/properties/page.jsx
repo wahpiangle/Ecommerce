@@ -12,7 +12,7 @@ const PropertyItems = ({ currentItems }) => {
   return (
     <>
       {currentItems && currentItems.map((item) => (
-        <PropertyBox key={item.id} id={item.id} image={item.image} title={item.title} price={item?.rentalPrice || item?.salePrice} location={item.country} beds={item.beds} size={item.size} listingType={item.listingType} />
+        <PropertyBox key={item.id} id={item.id} image={item.image} title={item.title} price={item?.rentalPrice || item?.salePrice} location={item.address.description} beds={item.beds} size={item.size} listingType={item.listingType} />
       ))}
     </>
   )

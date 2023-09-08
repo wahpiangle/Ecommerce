@@ -14,9 +14,11 @@ import FacilityItem from './components/FacilityItem'
 import Loader from '@/app/components/Loader'
 import useSWR from 'swr'
 import axios from 'axios'
+import useCountries from '@/app/actions/useCountries'
 
 const page = () => {
   const { id } = useParams()
+  const { getByLabel } = useCountries()
 
   const fetcher = async (url) => {
     const response = await axios.get(url).then(res => res.data)
@@ -28,7 +30,6 @@ const page = () => {
   const Map = useMemo(() => dynamic(() => import('./components/Map'), {
     ssr: false
   }), [data])
-
   return (
     <div className='bg-primary rounded-xl p-4 mx-2'>
       <Link className='text-primaryText text-xl font-semibold cursor-pointer' href="/dashboard/properties">
@@ -54,12 +55,17 @@ const page = () => {
                   </div>
                 </Carousel>
                 <div className='flex justify-between flex-wrap'>
-                  <div className='mt-1'>
+                  <div className='mt-1 w-full'>
                     <h2 className='text-sm'>{data.type}</h2>
                     <h1 className='text-2xl mt-2'>{data.title}</h1>
-                    <div className="flex gap-1 items-center text-sm mt-2">
-                      <BiMapPin className="text-secondaryText" />
-                      <p className="text-secondaryText">{data.country}</p>
+                    <div className='flex justify-between'>
+                      <div className="flex gap-1 items-center text-sm mt-2">
+                        <BiMapPin className="text-secondaryText" />
+                        <p className="text-secondaryText">{data.address.description || ""}</p>
+                      </div>
+                      <div>
+                        {getByLabel(data.country).flag}
+                      </div>
                     </div>
                     <div className='mt-3 flex gap-4'>
                       <div className="flex items-center text-primaryText gap-1 text-sm whitespace-nowrap">
@@ -110,7 +116,7 @@ const page = () => {
                   <h1 className='text-xl mt-2'>{data.agent || "No Agent Assigned"}</h1>
                   <p className='mt-2 text-secondaryText'>{data.contact || ""}</p>
                 </div>
-                <Map location={data.geocode}/>
+                <Map location={data.geocode} />
               </div>
             </div>
           </div>}

@@ -75,6 +75,8 @@ const PropertyFilter = ({
             gap: "5px",
             paddingX: "16px",
             paddingY: "8px",
+            zIndex: "1",
+            position: "relative",
           }}
           style={{ backgroundColor: "#475BE8" }}
         >

@@ -110,7 +110,6 @@ const page = () => {
               <label htmlFor="size" className="text-lg">Size (sqft)</label>
               <input type="number" id="size" {...register("size", { required: true })} placeholder="Size" className="px-2 py-3 focus:outline-none rounded-lg bg-primary border-[1px] border-secondaryText" />
             </div>
-
           </div>
           <div className="mt-3 flex">
             <div className="flex flex-1 flex-col gap-2">

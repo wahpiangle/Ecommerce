@@ -12,7 +12,7 @@ import { MenuItem } from '@mui/material';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import dynamic from 'next/dynamic';
-
+// TODO implement google maps api
 const Map = dynamic(()=> import('./Map'), { ssr: false })
 
 const SelectLocation = ({ location, setLocation, isWideScreen }) => {
