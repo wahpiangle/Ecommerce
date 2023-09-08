@@ -7,11 +7,12 @@ export default function SelectAddress() {
 
     useEffect(()=>{
         const delayedDebounceFn = setTimeout(()=>{
-            getAddress();
+
+            getAddress()
+
         }, 1000)
 
         return () => clearTimeout(delayedDebounceFn)
-
     }, [source])
 
     const getAddress = async () => {
@@ -20,24 +21,26 @@ export default function SelectAddress() {
                 'Content-Type': 'application/json'
             }
         });
-        const result = await res.json();
-        setAddressList(result)
+        const {data} = await res.json();
+        console.log(data)
+        setAddressList(data?.suggestions || [])
     }
-    // ! error here: it's always undefined, fix
-    console.log(addressList.suggestions)
+
     return (
         <div className='mt-3'>
             <h1>What's the address?</h1>
             <input type="text"
+            value={source}
             onChange={(e) => setSource(e.target.value)}
             className='rounded-xl p-2 w-full mt-2 focus:outline-none bg-primary border-[1px] border-secondaryText'
-            value={source}
             />
-            { addressList?.suggestions ? <div>
-            {addressList?.suggestions.map((item, index)=>(
-                <h2>{item.full_address}</h2>
-            ))}
-            </div> : null }
+            {addressList.length > 0 && (
+                <div>
+                    {addressList.map((item, index) => (
+                        <h2 key={index}>{item.place_formatted}</h2>
+                    ))}
+                </div>
+            )}
         </div>
     )
 }

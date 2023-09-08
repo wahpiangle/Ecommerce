@@ -9,6 +9,9 @@ images:{
             pathname:'/**'
         }
     ]
+},
+env:{
+    GOOGLE_MAPS: process.env.GOOGLE_MAPS,
 }
 }
 

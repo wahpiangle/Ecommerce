@@ -10,6 +10,7 @@ import { toast } from "react-hot-toast"
 import { useSession } from "next-auth/react"
 import Link from "next/link"
 import SelectAddress from "./components/SelectAddress"
+import GoogleMaps from "./components/GoogleMaps"
 
 const page = () => {
   const { register, handleSubmit, formState: { errors }, control } = useForm()
@@ -122,7 +123,7 @@ const page = () => {
             </div>
           </div>
           <div className="flex mt-3 gap-2">
-            <div className="flex flex-col gap-1 flex-1">
+            <div className="flex flex-col gap-1 flex-1 items-start">
               <label htmlFor="images" className="text-lg">Upload Images</label>
               <div className="flex gap-2 items-center">
                 <CldUploadButton
@@ -158,8 +159,8 @@ const page = () => {
               rules={{ required: true }}
             />
           </div>
-          <div className="mt-3 flex flex-col gap-2">
-            <SelectAddress/>
+          <div className="mt-6 flex flex-col gap-2">
+            <GoogleMaps/>
           </div>
           <button type="submit" className="cursor-pointer px-3 py-2 bg-blueText rounded-lg mt-3 hover:brightness-75">Add Property</button>
         </form>

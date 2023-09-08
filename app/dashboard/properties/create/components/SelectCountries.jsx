@@ -33,15 +33,15 @@ const SelectCountries = ({ ...field }) => {
     menu: base => ({
       ...base,
       backgroundColor: '#1A1D1F',
-      color: '#EFEFEF',
+      color: '#6F767E',
     }),
     singleValue: (styles) =>({
       ...styles,
-      color: '#EFEFEF'
+      color: '#6F767E'
     })
   }
   return (
-    <div className="flex-1 mt-1">
+    <div className="flex-1">
       <label htmlFor="images" className="text-lg">Select Location</label>
       <Select
         placeholder="Anywhere"
