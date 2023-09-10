@@ -6,7 +6,6 @@ import Box from '@mui/material/Box'
 import FormControl from '@mui/material/FormControl'
 import InputLabel from '@mui/material/InputLabel'
 import Select from '@mui/material/Select'
-import OutlinedInput from '@mui/material/OutlinedInput'
 import MenuItem from '@mui/material/MenuItem'
 
 const Typepicker = ({ propertyType, setPropertyType, isWideScreen }) => {
@@ -21,7 +20,7 @@ const Typepicker = ({ propertyType, setPropertyType, isWideScreen }) => {
         <div className={`${isWideScreen? 'border-r-2' : 'border-b-2 pb-4'} border-secondaryText px-3 flex-1`}>
             <h2 className='text-secondaryText'>Property Type</h2>
             <div className='flex items-center gap-4 mt-1 justify-between cursor-pointer group' onClick={handleClickOpen}>
-                <h1 className='font-bold text-lg whitespace-nowrap text-white'>{propertyType}</h1>
+                <h1 className='font-bold text-lg whitespace-nowrap text-white'>{propertyType == "" ? 'Any Type' : propertyType}</h1>
                 <div className="bg-blueText p-2 rounded-full">
                     <BsChevronDown className='text-lg text-white group-hover:brightness-90' />
                 </div>
@@ -36,12 +35,14 @@ const Typepicker = ({ propertyType, setPropertyType, isWideScreen }) => {
                         Set your desired property type
                     </DialogContentText>
                     <Box sx={{ width: 400, mt: 2, display: 'flex' }}>
-                        <FormControl sx={{ m: 1, minWidth: 120 }}>
-                            <InputLabel id="dialog-select">Property Type</InputLabel>
+                        <FormControl sx={{ m: 1, minWidth: 120 }} fullWidth>
+                            <InputLabel id="dialog-select-label">Property Type</InputLabel>
                             <Select
+                                labelId="dialog-select-label"
+                                id="dialog-select"
+                                label="Property Type"
                                 value={propertyType}
                                 onChange={handleChange}
-                                input={<OutlinedInput label="Property Type" id="dialog-select" />}
                             >
                                 <MenuItem value={'Landed'}>Landed</MenuItem>
                                 <MenuItem value={'Apartment'}>Apartment</MenuItem>

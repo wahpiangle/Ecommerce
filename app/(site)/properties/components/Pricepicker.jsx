@@ -65,6 +65,7 @@ const Pricepicker = ({ setPrice, price, defaultMaxPrice, isWideScreen }) => {
         setPrice([Number(event.target.value), price[1]]);
     }
     const handleInputMaxPriceChange = (event) => {
+        if(Number(event.target.value) > defaultMaxPrice) return;
         setPrice([price[0], Number(event.target.value)]);
     }
     return (
@@ -96,8 +97,10 @@ const Pricepicker = ({ setPrice, price, defaultMaxPrice, isWideScreen }) => {
                             $
                             <input
                                 type="number" className="w-[90px] border border-secondaryText p-1 rounded-lg"
-                                value={price[0]} onChange={handleInputMinPriceChange}
+                                value={price[0]}
+                                onChange={handleInputMinPriceChange}
                                 max={price[1] - 1}
+                                min={0}
                             />
                         </div>
                         <AirbnbSlider
@@ -114,7 +117,7 @@ const Pricepicker = ({ setPrice, price, defaultMaxPrice, isWideScreen }) => {
                                 }
                             }}
                             min={0}
-                            //TODO can set this to max price of properties obtained from API 
+                            //TODO can set this to max price of properties obtained from API
                             value={price}
                             max={defaultMaxPrice}
                             step={1000}
@@ -126,7 +129,7 @@ const Pricepicker = ({ setPrice, price, defaultMaxPrice, isWideScreen }) => {
                             <input
                                 type="number"
                                 className="w-[90px] border border-secondaryText p-1 rounded-lg"
-                                value={price[1]} 
+                                value={price[1]}
                                 onChange={handleInputMaxPriceChange}
                                 min={price[0] + 1}
                             />

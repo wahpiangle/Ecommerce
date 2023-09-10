@@ -15,7 +15,7 @@ const page = () => {
   const [location, setLocation] = useState('Anywhere');
   const defaultMaxPrice = 10000000;
   const [price, setPrice] = useState([0, defaultMaxPrice]);
-  const [propertyType, setPropertyType] = useState('Any Type');
+  const [propertyType, setPropertyType] = useState('');
   const [facilities, setFacilities] = useState([]);
   const [userWishList, setUserWishList] = useState([1, 2])
   let type = searchParams.get('type');
