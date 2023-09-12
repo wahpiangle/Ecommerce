@@ -1,7 +1,18 @@
 import prisma from "@/app/libs/prismadb"
 import { NextResponse } from "next/server";
 
-export async function GET() {
+export async function GET(req) {
+    const listingType = req.nextUrl.searchParams.get('listingType')
+    switch(listingType) {
+        case 'rent':
+            return;
+            // TODO
+        case 'purchase':
+            return;
+            // TODO
+        default:
+            return;
+    }
     try {
         const properties = await prisma.property.findMany({
             where: {
