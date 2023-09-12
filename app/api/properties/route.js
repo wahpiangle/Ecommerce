@@ -11,7 +11,7 @@ export async function GET(req) {
             return;
             // TODO
         default:
-            return;
+            getProperties();
     }
     try {
         const properties = await prisma.property.findMany({
@@ -24,5 +24,12 @@ export async function GET(req) {
         console.log('Property Get Error: ', error)
     }
 }
-// TODO handle route action based on params
-//TODO handle POST request with filters
+
+async function getProperties(){
+    try{
+        const properties = await prisma.property.findMany();
+        return new NextResponse(JSON.stringify(properties), { status: 200 });
+    }catch(error){
+        console.log('Property Get Error: ', error)
+    }
+}
