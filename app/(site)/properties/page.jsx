@@ -18,17 +18,11 @@ const page = () => {
   const [propertyType, setPropertyType] = useState('');
   const [facilities, setFacilities] = useState([]);
   const [userWishList, setUserWishList] = useState([1, 2])
+
   let type = searchParams.get('type');
   if (type !== 'purchase' && type !== 'rent') {
     type = 'rent';
   }
-
-
-  const propertiesFetcher = async(url) =>{
-    const response = await axios.get(url).then(res => res.data)
-    return response
-  }
-  const {data, isLoading, error} = useSWR(`/api/properties/${type}`, propertiesFetcher);
 
   const properties = [
     {
@@ -99,6 +93,11 @@ const page = () => {
     }
   ]
 
+  const propertiesFetcher = async (url) => {
+    const response = await axios.get(url).then(res => res.data)
+    return response
+  }
+  const { data, isLoading, error } = useSWR(`/api/properties?listingType=${type}`, propertiesFetcher);
 
   const handleSearch = () => {
     //TODO setup api endpoint to search for properties
@@ -132,8 +131,8 @@ const page = () => {
         </div>
 
         <div
-        className={
-          `mt-6
+          className={
+            `mt-6
           text-white
           grid
           gap-8
