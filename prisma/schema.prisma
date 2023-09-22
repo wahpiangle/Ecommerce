@@ -34,11 +34,13 @@ model Property {
     bedroom      Int
     bathroom     Int
     size         Int
-    rating       Float? @default(0)
+    rating       Float?        @default(0)
     images       String[]
     facilities   String[]
     booked       Boolean       @default(false)
     purchased    Boolean       @default(false)
+    startDate    DateTime?
+    endDate      DateTime?
     bookedDates  DateTime[]
     createdAt    DateTime      @default(now())
     updatedAt    DateTime      @updatedAt
@@ -50,7 +52,7 @@ model Property {
     agentId      String?       @db.ObjectId
     Purchases    Purchases[]
     country      String
-    geocode     Json
+    geocode      Json
 }
 
 model Reservation {

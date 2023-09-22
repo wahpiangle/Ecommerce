@@ -11,19 +11,21 @@ import { useSession } from "next-auth/react"
 import Link from "next/link"
 import SelectAddress from "./components/SelectAddress"
 import GoogleMaps from "./components/GoogleMaps"
+import SelectDate from "./components/SelectDate"
+import { HiArrowLongRight } from "react-icons/hi2"
+import moment from "moment"
 
 const Page = () => {
   const { register, handleSubmit, formState: { errors }, control } = useForm()
   const [uploaded, setUploaded] = useState([])
   const [images, setImages] = useState([])
-  const session = useSession();
   const handleUpload = (result) => {
     setUploaded(prev => [...prev, result.info.original_filename])
     setImages(prev => [...prev, result.info.secure_url])
   }
 
   const onSubmit = (data) => {
-    if (!data.title || !data.description || !data.address || !data.type || !data.listingType || !data.price || !data.bedroom || !data.bathroom || !data.size || !data.country || !data.address) {
+    if (!data.title || !data.description || !data.address || !data.type || !data.listingType || !data.price || !data.bedroom || !data.bathroom || !data.size || !data.country || !data.address || (data.listingType == "Rent" && (!data.startDate || !data.endDate))) {
       toast.error('Please fill in all the fields!')
       return
     }
@@ -38,6 +40,8 @@ const Page = () => {
       bedroom: data.bedroom,
       bathroom: data.bathroom,
       size: data.size,
+      startDate: data.listingType == "Rent" ? moment(data.startDate).toDate() : "",
+      endDate: data.listingType == "Rent" ? moment(data.endDate).toDate() : "",
       images: images,
       country: data.country,
       userEmail: session.data.user.email,
@@ -48,7 +52,7 @@ const Page = () => {
       toast.error('Something went wrong!')
     })
   }
-  const onError = (errors, e) => console.log(errors, e)
+  const onError = (errors) => console.log(errors)
 
   return (
     <div>
@@ -111,7 +115,7 @@ const Page = () => {
               <input type="number" id="size" {...register("size", { required: true })} placeholder="Size" className="px-2 py-3 focus:outline-none rounded-lg bg-primary border-[1px] border-secondaryText" />
             </div>
           </div>
-          <div className="mt-3 flex">
+          <div className="mt-3 flex gap-6">
             <div className="flex flex-1 flex-col gap-2">
               <label htmlFor="facilities" className="text-lg">Select Facilities</label>
               <Controller
@@ -122,6 +126,27 @@ const Page = () => {
                 )}
                 rules={{ required: true }}
               />
+            </div>
+            <div className="flex flex-1 flex-col gap-2">
+              <label htmlFor="date" className="text-lg">Select Date (For Rentals)</label>
+              <div className="flex items-center">
+                <Controller
+                  name="startDate"
+                  control={control}
+                  render={({ field }) => (
+                    <SelectDate {...field} label={"Start Date"} />
+                  )}
+                />
+                <HiArrowLongRight className="text-2xl mx-2" />
+                <Controller
+                  name="endDate"
+                  control={control}
+                  render={({ field }) => (
+                    <SelectDate {...field} label={"End Date"} />
+                  )}
+                />
+
+              </div>
             </div>
           </div>
           <div className="flex mt-3 gap-2">

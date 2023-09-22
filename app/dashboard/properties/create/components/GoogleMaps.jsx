@@ -100,6 +100,11 @@ export default function GoogleMaps({ onChange, _value }) {
             borderColor: '#6F767E',
             borderRadius: '8px',
           },
+          "&:hover": {
+            "& .MuiOutlinedInput-notchedOutline": {
+              borderColor: "#B3B3B3",
+            }
+          },
           "& .MuiFormLabel-root": {
             color: "#6F767E"
           },
