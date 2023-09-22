@@ -16,7 +16,7 @@ import useSWR from 'swr'
 import axios from 'axios'
 import useCountries from '@/app/actions/useCountries'
 
-const page = () => {
+const Page = () => {
   const { id } = useParams()
   const { getByLabel } = useCountries()
 
@@ -29,7 +29,7 @@ const page = () => {
   const listingType = data?.listingType
   const Map = useMemo(() => dynamic(() => import('./components/Map'), {
     ssr: false
-  }), [data])
+  }), [])
   return (
     <div className='bg-primary rounded-xl p-4 mx-2'>
       <Link className='text-primaryText text-xl font-semibold cursor-pointer' href="/dashboard/properties">
@@ -124,4 +124,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

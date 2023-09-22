@@ -9,7 +9,7 @@ import { IoOptionsOutline } from 'react-icons/io5'
 import useSWR from "swr"
 import axios from "axios"
 
-const page = () => {
+const Page = () => {
   const searchParams = useSearchParams();
   const [dates, setDates] = useState([]);
   const [location, setLocation] = useState('Anywhere');
@@ -151,4 +151,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

@@ -12,7 +12,7 @@ import Link from "next/link"
 import SelectAddress from "./components/SelectAddress"
 import GoogleMaps from "./components/GoogleMaps"
 
-const page = () => {
+const Page = () => {
   const { register, handleSubmit, formState: { errors }, control } = useForm()
   const [uploaded, setUploaded] = useState([])
   const [images, setImages] = useState([])
@@ -69,11 +69,11 @@ const page = () => {
           </div>
           <div className="mt-3 flex flex-col gap-2">
             <Controller
-            render={({ field: { onChange, value } }) =>(
-              <GoogleMaps onChange={onChange} _value={value} />
-            )}
-            name="address"
-            control={control} />
+              render={({ field: { onChange, value } }) => (
+                <GoogleMaps onChange={onChange} _value={value} />
+              )}
+              name="address"
+              control={control} />
           </div>
           <div className="flex mt-3 gap-6 items-center">
             <div className="flex flex-1 flex-col gap-2">
@@ -169,4 +169,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

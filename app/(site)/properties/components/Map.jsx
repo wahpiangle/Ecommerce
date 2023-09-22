@@ -15,7 +15,7 @@ L.Icon.Default.mergeOptions({
 
 const Map = ({ location }) => {
     const { getByLabel } = useCountries()
-    let center = location=== 'Anywhere' ? "" : getByLabel(location).latlng;
+    let center = location === 'Anywhere' ? "" : getByLabel(location).latlng;
     return (
         <MapContainer
             center={center || [51, -0.09]}
@@ -28,7 +28,7 @@ const Map = ({ location }) => {
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             {center && (
-                <Marker position={center}/>
+                <Marker position={center} />
             )}
         </MapContainer>
     )

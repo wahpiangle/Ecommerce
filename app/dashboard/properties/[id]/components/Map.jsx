@@ -13,13 +13,13 @@ L.Icon.Default.mergeOptions({
     shadowUrl: markerShadow.src
 })
 
-const Map = ({location}) => {
+const Map = ({ location }) => {
+    const { getByLabel } = useCountries()
     let center;
-    if(!location?.geometry){
-        const { getByLabel } = useCountries()
+    if (!location?.geometry) {
         center = getByLabel(location).latlng; //array [1,2]
-    }else{
-        const {lat, lng} = location?.geometry?.location
+    } else {
+        const { lat, lng } = location?.geometry?.location
         center = [lat, lng]
     }
 
@@ -35,7 +35,7 @@ const Map = ({location}) => {
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             {center && (
-                <Marker position={center}/>
+                <Marker position={center} />
             )}
         </MapContainer>
     )

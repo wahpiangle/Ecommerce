@@ -20,8 +20,8 @@ const About = () => {
             We make it easy for property buyers, tenants & landlords.
           </h1>
           <p className="text-secondaryText md:text-md xl:text-lg mt-1 md:mt-4 sm:mt-2 sm:text-md text-sm">
-            Whether it's selling your current home, buying your next one or
-            finding a rental property, we can help. We're a full-service estate
+            Whether it is selling your current home, buying your next one or
+            finding a rental property, we can help. We are a full-service estate
             agency, with local experts on hand to help you at every stage of
             your property journey.
           </p>

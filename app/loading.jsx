@@ -1,11 +1,11 @@
 'use client'
-import { CircularProgress } from '@mui/material'
+import CircularProgress from '@mui/material/CircularProgress'
 
 const Loading = () => {
   return (
     <div className="flex justify-center items-center h-screen bg-black">
       <div className="flex flex-col items-center">
-            <CircularProgress />
+        <CircularProgress />
       </div>
     </div>
   )

@@ -17,6 +17,7 @@
     "@mui/icons-material": "^5.14.8",
     "@mui/material": "^5.13.6",
     "@next-auth/prisma-adapter": "^1.0.7",
+    "@next/bundle-analyzer": "^13.5.2",
     "@prisma/client": "^5.2.0",
     "antd": "^5.7.2",
     "autoprefixer": "10.4.14",

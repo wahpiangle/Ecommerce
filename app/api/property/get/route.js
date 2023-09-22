@@ -2,7 +2,8 @@ import prisma from "@/app/libs/prismadb"
 import { NextResponse } from "next/server";
 import getSession from "@/app/actions/getSession";
 
-export async function GET() {
+export async function GET(request) {
+    if (request.url.length < 0) return new Response("Error"); //! Required for build
     try {
         const session = await getSession();
         const user = await prisma.user.findUnique({

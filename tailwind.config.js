@@ -7,16 +7,17 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors:{
+      colors: {
         primary: '#1A1D1F',
         primaryText: '#EFEFEF',
         secondaryText: '#6F767E',
         blueText: '#475BE8',
       }
     },
-    fontFamily:{
+    fontFamily: {
       display: ["Merriweather", "serif"],
     }
   },
   plugins: [],
+  mode: 'jit',
 }

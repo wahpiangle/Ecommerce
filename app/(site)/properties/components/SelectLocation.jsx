@@ -8,11 +8,11 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
 import { useState } from 'react';
 import useCountries from '@/app/actions/useCountries';
-import { MenuItem } from '@mui/material';
+import MenuItem from '@mui/material/MenuItem';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import dynamic from 'next/dynamic';
-const Map = dynamic(()=> import('./Map'), { ssr: false })
+const Map = dynamic(() => import('./Map'), { ssr: false })
 
 const SelectLocation = ({ location, setLocation, isWideScreen }) => {
     const [open, setOpen] = useState(false);
@@ -23,7 +23,7 @@ const SelectLocation = ({ location, setLocation, isWideScreen }) => {
     const handleChange = (event) => setLocation(event.target.value);
 
     return (
-        <div className={`${isWideScreen ? 'border-r-2': 'border-b-2 pb-4'} border-secondaryText px-6 flex-1`}>
+        <div className={`${isWideScreen ? 'border-r-2' : 'border-b-2 pb-4'} border-secondaryText px-6 flex-1`}>
             <h2 className='text-secondaryText'>Location</h2>
             <div className='flex items-center justify-between gap-4 mt-1 cursor-pointer group' onClick={handleClickOpen}>
                 <h1 className='font-bold text-lg whitespace-nowrap text-white'>
@@ -39,7 +39,7 @@ const SelectLocation = ({ location, setLocation, isWideScreen }) => {
                     <DialogContentText>
                         Select your desired location
                     </DialogContentText>
-                    <FormControl variant="standard" sx={{ minWidth: 500, my:4}}>
+                    <FormControl variant="standard" sx={{ minWidth: 500, my: 4 }}>
                         <InputLabel id="location-select-standard-label">Location</InputLabel>
                         <Select
                             labelId="location-select-standard-label"
@@ -53,7 +53,7 @@ const SelectLocation = ({ location, setLocation, isWideScreen }) => {
                         </Select>
                     </FormControl>
                 </DialogContent>
-                <Map location={location}/>
+                <Map location={location} />
                 <DialogActions>
                     <Button onClick={handleClose}>Close</Button>
                 </DialogActions>

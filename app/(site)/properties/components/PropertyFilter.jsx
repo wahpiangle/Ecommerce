@@ -8,7 +8,7 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { IoOptionsOutline } from "react-icons/io5";
-import { Box } from "@mui/material";
+import Box from "@mui/material/Box";
 import Facilitiespicker from "./Facilitiespicker";
 
 const PropertyFilter = ({

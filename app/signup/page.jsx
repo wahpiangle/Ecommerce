@@ -24,7 +24,7 @@ const Signup = () => {
     if (session?.status === 'authenticated') {
       router.push('/')
     }
-  }, [session?.status])
+  }, [session?.status, router])
 
   const { register, handleSubmit, formState: { errors } } = useForm({
     defaultValues: {

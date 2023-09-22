@@ -18,20 +18,20 @@ const PropertyItems = ({ currentItems }) => {
   )
 }
 
-const page = () => {
-  const fetcher = async(url) =>{
+const Page = () => {
+  const fetcher = async (url) => {
     const response = await axios.get(url).then(res => res.data)
     return response
   }
 
-  const {data, isLoading, error} = useSWR(`/api/property/get`, fetcher);
+  const { data, isLoading, error } = useSWR(`/api/property/get`, fetcher);
   const [search, setSearch] = useState('')
   const [itemOffset, setItemOffset] = useState(0);
   const [filteredResult, setFilteredResult] = useState([])
 
   useMemo(() => {
-    if(!data) return
-    if(error) toast.error('Failed to load properties. Please refresh the page.')
+    if (!data) return
+    if (error) toast.error('Failed to load properties. Please refresh the page.')
     const filteredData = data.filter(item => {
       return item.title.toLowerCase().includes(search.toLowerCase())
     }, [search, data])
@@ -42,7 +42,7 @@ const page = () => {
     else {
       setFilteredResult(data)
     }
-  }, [search, data])
+  }, [search, data, error])
 
   //number 10 indicates number of items per page
   const endOffset = itemOffset + 10;
@@ -67,13 +67,13 @@ const page = () => {
       </div>
       <div className='bg-primary rounded-lg mt-4 p-3 mx-2'>
         {isLoading ? <Loader /> :
-        error ? <p>Failed to load properties. Please refresh the page.</p> :
-          <>
-            <input type='text' placeholder='Search' className='bg-primary focus:outline-none text-primaryText rounded-lg p-2 mt-2 w-full border-[1px] border-secondaryText' onChange={(e) => searchItems(e.target.value)} />
-            <div className="mt-4 grid md:grid-cols-2">
-              <PropertyItems currentItems={currentItems} />
-            </div>
-          </>
+          error ? <p>Failed to load properties. Please refresh the page.</p> :
+            <>
+              <input type='text' placeholder='Search' className='bg-primary focus:outline-none text-primaryText rounded-lg p-2 mt-2 w-full border-[1px] border-secondaryText' onChange={(e) => searchItems(e.target.value)} />
+              <div className="mt-4 grid md:grid-cols-2">
+                <PropertyItems currentItems={currentItems} />
+              </div>
+            </>
         }
         {
           filteredResult.length === 0 && !isLoading && !error && <p className='text-primaryText text-center my-4'>No properties found.</p>
@@ -93,4 +93,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
