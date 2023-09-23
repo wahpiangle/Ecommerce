@@ -1,7 +1,11 @@
+import { CircularProgress } from "@mui/material"
+
 const Loader = () => {
   return (
-    <div className="flex justify-center p-16">
-      <span className="loader"></span>
+    <div className="flex justify-center items-center h-screen bg-black w-full">
+      <div className="flex flex-col items-center">
+        <CircularProgress />
+      </div>
     </div>
   )
 }
