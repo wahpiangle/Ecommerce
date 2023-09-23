@@ -38,6 +38,8 @@ export async function POST(request){
                     bathroom: parseInt(bathroom),
                     bedroom: parseInt(bedroom),
                     listingType,
+                    startDate,
+                    endDate,
                     images,
                     geocode: geocodeLocation,
                     country: country.label,

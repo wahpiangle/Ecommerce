@@ -18,10 +18,10 @@ const Datepicker = ({ ...field }) => {
                             color: "#EFEFEF",
                         },
                         "& .MuiInputLabel-root": {
-                            color: "#EFEFEF"
+                            color: "#6F767E"
                         },
                         "& .MuiFormLabel-root": {
-                            color: "#EFEFEF"
+                            color: "#6F767E"
                         },
                         "& .MuiOutlinedInput-notchedOutline": {
                             borderColor: "#6F767E",
@@ -30,10 +30,13 @@ const Datepicker = ({ ...field }) => {
                         "&:hover": {
                             "& .MuiOutlinedInput-notchedOutline": {
                                 borderColor: "#B3B3B3",
+                            },
+                            "& .MuiInputBase-root":{
+                                borderColor: "#B3B3B3",
                             }
                         },
                         "& .MuiButtonBase-root": {
-                            color: "#EFEFEF"
+                            color: "#6F767E"
                         },
                     }}
                     {...field}

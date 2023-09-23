@@ -23,6 +23,7 @@ const Page = () => {
     setUploaded(prev => [...prev, result.info.original_filename])
     setImages(prev => [...prev, result.info.secure_url])
   }
+  const session = useSession();
 
   const onSubmit = (data) => {
     if (!data.title || !data.description || !data.address || !data.type || !data.listingType || !data.price || !data.bedroom || !data.bathroom || !data.size || !data.country || !data.address || (data.listingType == "Rent" && (!data.startDate || !data.endDate))) {
@@ -43,7 +44,7 @@ const Page = () => {
       startDate: data.listingType == "Rent" ? moment(data.startDate).toDate() : "",
       endDate: data.listingType == "Rent" ? moment(data.endDate).toDate() : "",
       images: images,
-      country: data.country,
+      country: data.country.label,
       userEmail: session.data.user.email,
       address: data.address
     }).then(res => {

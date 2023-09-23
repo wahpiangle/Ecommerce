@@ -103,6 +103,9 @@ export default function GoogleMaps({ onChange, _value }) {
           "&:hover": {
             "& .MuiOutlinedInput-notchedOutline": {
               borderColor: "#B3B3B3",
+            },
+            "& .MuiInputBase-root":{
+              borderColor: "#B3B3B3",
             }
           },
           "& .MuiFormLabel-root": {
