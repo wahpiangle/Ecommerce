@@ -112,7 +112,7 @@ const Page = () => {
 
   return (
     <div className="bg-black min-h-screen">
-      <div className="lg:px-32 md:px-24 sm:px-12 px-10 py-8">
+      <div className="">
         <div className="flex flex-wrap justify-between items-center">
           <h1 className="text-primaryText text-4xl font-display font-medium">Search Properties to {type.charAt(0).toUpperCase() + type.slice(1)}</h1>
           <PropertyFilter

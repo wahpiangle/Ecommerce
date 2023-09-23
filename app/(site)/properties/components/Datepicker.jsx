@@ -1,5 +1,5 @@
 import Space from 'antd/es/space'
-import DatePicker from 'antd/es/date-picker'
+import { DatePicker } from 'antd'
 import { ConfigProvider } from 'antd';
 import moment from 'moment';
 const { RangePicker } = DatePicker;

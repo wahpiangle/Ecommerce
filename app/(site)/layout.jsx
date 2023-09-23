@@ -8,7 +8,9 @@ const MainLayout = async ({ children }) => {
   return (
     <div className='bg-primary min-h-screen'>
       <Navbar currentUser={currentUser} />
-      {children}
+      <div className='bg-black lg:px-32 md:px-24 sm:px-12 px-10 py-8'>
+        {children}
+      </div>
     </div>
   )
 }
