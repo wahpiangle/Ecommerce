@@ -94,11 +94,24 @@ const Page = () => {
   ]
 
   const propertiesFetcher = async (url) => {
-    const response = await axios.get(url).then(res => res.data)
+    const response = await axios.post(url,
+      {
+        type,
+        dates,
+        location,
+        price,
+        propertyType,
+        facilities
+      },
+      {
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      .then(res => res.data)
     return response
   }
   const { data, isLoading, error } = useSWR(`/api/properties?listingType=${type}`, propertiesFetcher);
-
   const handleSearch = () => {
     //TODO setup api endpoint to search for properties
     console.log({
@@ -107,6 +120,7 @@ const Page = () => {
       location,
       price,
       propertyType,
+      facilities
     });
   }
 
@@ -142,9 +156,12 @@ const Page = () => {
           sm:grid-cols-2
           `
           }>
-          {properties.map((property) => (
-            <PropertyCard key={property.id} property={property} setUserWishList={setUserWishList} userWishList={userWishList} />
-          ))}
+          {
+            isLoading ?
+            <div className="text-white">Loading...</div> : data.map((property) => (
+              <PropertyCard key={property.id} property={property} setUserWishList={setUserWishList} userWishList={userWishList} />
+            ))
+          }
         </div>
       </div>
     </div>

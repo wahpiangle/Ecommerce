@@ -20,10 +20,17 @@ const PropertyCard = ({ property, setUserWishList, userWishList }) => {
             </Link>
             <div className="flex flex-col gap-1 text-white bg-primary p-3 rounded-b-lg">
                 <div className='flex justify-between items-center'>
-                    <div className="flex gap-1 items-center">
-                        <h1 className="text-xl text-blueText font-semibold">${property.rentalPrice}</h1>
-                        <span className="text-sm text-secondaryText">/night</span>
-                    </div>
+                    {
+                        property.listingType === "Rent" ?
+                            <div className="flex gap-1 items-center">
+                                <h1 className="text-xl text-blueText font-semibold">${property.rentalPrice.toLocaleString()}</h1>
+                                <span className="text-sm text-secondaryText">/night</span>
+                            </div>
+                            :
+                            <div className="flex gap-1 items-center">
+                                <h1 className="text-xl text-blueText font-semibold">${property.salePrice.toLocaleString()}</h1>
+                            </div>
+                    }
                     <div className='rounded-full p-2 border group border-secondaryText cursor-pointer'>
                         {
                             userWishList.includes(property.id) ?
@@ -40,8 +47,8 @@ const PropertyCard = ({ property, setUserWishList, userWishList }) => {
                 </div>
                 <Link className="text-lg font-semibold" href={`/properties/${property.id}`}>{property.title}</Link>
                 <div className='flex text-secondaryText text-sm gap-1'>
-                    <p>{property.address},</p>
-                    <p>{property.country}</p>
+                    <p>{property.address.description},</p>
+                    {/* <p>{property.country}</p> */}
                 </div>
                 <div className='flex text-secondaryText text-sm gap-2 border-t border-secondaryText mt-2 py-2 w-full'>
                     <div className='flex gap-2 items-center whitespace-nowrap'>

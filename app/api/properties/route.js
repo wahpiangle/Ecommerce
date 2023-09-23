@@ -1,13 +1,14 @@
 import prisma from "@/app/libs/prismadb"
 import { NextResponse } from "next/server";
 
-export async function GET(req) {
+export async function POST(req) {
     const listingType = req.nextUrl.searchParams.get('listingType')
     return await getProperties(listingType)
 }
 
-// ! in mongoDB listingType is saved as 'Rent' or 'Sale' but in the query it is 'rent' or 'purchase'
+//* in mongoDB listingType is saved as 'Rent' or 'Sale' but in the query it is 'rent' or 'purchase'
 async function getProperties(listingType){
+    // TODO handle filters
     switch(listingType){
         case 'rent':
             try{
