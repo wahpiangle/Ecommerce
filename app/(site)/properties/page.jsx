@@ -9,6 +9,7 @@ import useSWR from "swr"
 import axios from "axios"
 import { mutate } from "swr"
 import CircularProgress from "@mui/material/CircularProgress"
+import toast from "react-hot-toast"
 
 const Page = () => {
   const searchParams = useSearchParams();
@@ -134,15 +135,20 @@ const Page = () => {
             propertyType={propertyType}
             setPropertyType={setPropertyType}
             handleSearch={handleSearch}
+            listingType={type}
           />
         </div>
 
         <div
-          className={"mt-6 text-white grid gap-8 justify-start 2xl:grid-cols-4 xl:grid-cols-3 sm:grid-cols-2"}>
+          className="mt-6 text-white grid gap-8 justify-start 2xl:grid-cols-4 xl:grid-cols-3 sm:grid-cols-2">
           {
             isLoading ?
             <div className="col-[1/-1] w-full flex justify-center items-center h-32">
               <CircularProgress/>
+            </div>:
+            !data ?
+            <div className="col-[1/-1] w-full flex justify-center items-center h-32">
+              <p className="text-lg">No Properties Found</p>
             </div>:
             data.map((property) => (
               <PropertyCard key={property.id} property={property} setUserWishList={setUserWishList} userWishList={userWishList} />

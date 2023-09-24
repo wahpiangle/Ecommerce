@@ -4,7 +4,7 @@ import prisma from '@/app/libs/prismadb';
 export async function POST(request){
     try{
         const body = await request.json();
-        const { title, description, type, price, facilities, address, bathroom, bedroom, listingType, images, country, size, userEmail } = body;
+        const { title, description, type, price, facilities, address, bathroom, bedroom, listingType, images, country, size, userEmail, startDate, endDate } = body;
         if(!title || !description || !type || !price || !facilities || !address || !bathroom || !bedroom || !listingType || !country || !size){
             return new NextResponse('Missing property data', {status: 400});
         }
@@ -42,7 +42,7 @@ export async function POST(request){
                     endDate,
                     images,
                     geocode: geocodeLocation,
-                    country: country.label,
+                    country,
                     size: parseInt(size),
                     owner: {
                         connect: {

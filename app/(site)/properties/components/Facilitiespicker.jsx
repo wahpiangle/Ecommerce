@@ -53,7 +53,7 @@ const Facilitiespicker = ({ facilities, setFacilities, isWideScreen }) => {
                     <DialogContentText>
                         Set your desired facilities
                     </DialogContentText>
-                    <Box sx={{ width: 400, mt: 2, display: 'flex' }}>
+                    <Box sx={{ width: 400, mt: 2, display: 'flex', maxWidth:'100%' }}>
                         <FormControl sx={{ m: 1, minWidth: 120 }}>
                             <InputLabel id="checkbox-label">Facilities</InputLabel>
                             <Select
@@ -64,6 +64,7 @@ const Facilitiespicker = ({ facilities, setFacilities, isWideScreen }) => {
                                 onChange={handleChange}
                                 input={<OutlinedInput label="Facilities" />}
                                 renderValue={(selected) => selected.join(', ')}
+                                sx={{ width: '40vw', maxWidth:'100%' }}
                             >
                                 {
                                     facilityOptions.map((facility, index) => {

@@ -30,6 +30,7 @@ const Page = () => {
       toast.error('Please fill in all the fields!')
       return
     }
+    console.log(data)
     axios.post('/api/property/create', {
       title: data.title,
       description: data.description,

@@ -48,6 +48,7 @@ const Typepicker = ({ propertyType, setPropertyType, isWideScreen }) => {
                                 value={propertyType}
                                 onChange={handleChange}
                             >
+                                <MenuItem value={''}>Any Type</MenuItem>
                                 <MenuItem value={'Landed'}>Landed</MenuItem>
                                 <MenuItem value={'Apartment'}>Apartment</MenuItem>
                                 <MenuItem value={'Condo'}>Condo</MenuItem>

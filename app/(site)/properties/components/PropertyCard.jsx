@@ -14,9 +14,9 @@ const PropertyCard = ({ property, setUserWishList, userWishList }) => {
         }
     }
     return (
-        <div className="rounded-lg flex flex-col justify-center flex-initial">
-            <Link href={`/properties/${property.id}`}>
-                <Image src={property.images[0]} alt={property.title} className="rounded-t-lg" width={600} height={800} />
+        <div className="rounded-lg flex flex-col justify-center flex-initial border-secondaryText border-[1px]">
+            <Link href={`/properties/${property.id}`} className='h-[200px]'>
+                <Image src={property.images[0] || '/assets/prop-placeholder.png'} alt={property.title} className="rounded-t-lg" width={600} height={200}/>
             </Link>
             <div className="flex flex-col gap-1 text-white bg-primary p-3 rounded-b-lg">
                 <div className='flex justify-between items-center'>

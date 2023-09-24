@@ -39,14 +39,20 @@ const SelectLocation = ({ location, setLocation, isWideScreen }) => {
                     <DialogContentText>
                         Select your desired location
                     </DialogContentText>
-                    <FormControl variant="standard" sx={{ minWidth: 500, my: 4 }}>
+                    <FormControl variant="standard" sx={{ my: 4, width:'50vw', maxWidth:'100%' }}>
                         <InputLabel id="location-select-standard-label">Location</InputLabel>
                         <Select
                             labelId="location-select-standard-label"
                             onChange={handleChange}
                             label="Location"
                             value={location}
+                            MenuProps={{
+                                sx:{
+                                    maxHeight: '50vh'
+                                }
+                            }}
                         >
+                            <MenuItem value='Anywhere'>Anywhere</MenuItem>
                             {allCountries.map((country) => (
                                 <MenuItem value={country.label} key={country.label}>{country.label}, {country.region} {country.flag}</MenuItem>
                             ))}

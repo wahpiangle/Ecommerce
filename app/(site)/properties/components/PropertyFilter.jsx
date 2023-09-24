@@ -23,6 +23,7 @@ const PropertyFilter = ({
   propertyType,
   setPropertyType,
   handleSearch,
+  listingType,
 }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -35,13 +36,19 @@ const PropertyFilter = ({
 
   return (
     <>
-      <div className="xl:flex hidden bg-primary rounded-lg min-w-full py-3 mt-4">
+      <div className="lg:flex hidden bg-primary rounded-lg min-w-full py-3 mt-4">
         <SelectLocation
           location={location}
           setLocation={setLocation}
           isWideScreen={true}
         />
-        <Datepicker setDates={setDates} isWideScreen={true} />
+        {
+          listingType === "rent" ?(
+            <Datepicker setDates={setDates} isWideScreen={true} />
+          ) :(
+            <></>
+          )
+        }
         <Pricepicker
           defaultMaxPrice={defaultMaxPrice}
           setPrice={setPrice}
@@ -60,7 +67,7 @@ const PropertyFilter = ({
         />
         <SearchButton handleSearch={handleSearch} isWideScreen={true} />
       </div>
-      <div className="xl:hidden sm:mt-0 mt-4">
+      <div className="lg:hidden sm:mt-0 mt-4">
         <Button
           id="fade-button"
           aria-controls={open ? "fade-menu" : undefined}
