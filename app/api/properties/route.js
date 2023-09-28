@@ -72,16 +72,15 @@ async function getPropertiesWithFilter(dates, location, price, propertyType, fac
 						type: propertyType === '' ? undefined : propertyType
 					},
 					{
-						facilities: facilities.length === 0 ? undefined : {hasEvery: facilities}
+						facilities: facilities.length === 0 ? undefined : { hasEvery: facilities }
 					},
 					{
-						startDate: dates[0] ? {gte: dates[0],} : undefined,
-						endDate: dates[1] ? {lte: dates[1],} : undefined,
+						startDate: dates[0] ? { gte: dates[0], } : undefined,
+						endDate: dates[1] ? { lte: dates[1], } : undefined,
 					}
 				]
 			}
 		});
-		console.log(properties)
 		return new NextResponse(JSON.stringify(properties), { status: 200 });
 	} catch (error) {
 		console.log('Property Get Error (rent): ', error)
