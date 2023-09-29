@@ -1,4 +1,5 @@
 'use client'
+import { CircularProgress } from "@mui/material"
 import useSWR from "swr"
 
 const Page = ({ params }) => {
@@ -8,7 +9,20 @@ const Page = ({ params }) => {
   console.log(data)
   return (
     <div className="text-white h-screen">
-      dd
+      {isLoading ?
+        <div className="flex justify-center items-center h-screen">
+          <CircularProgress />
+        </div>
+        :
+        error ?
+          <div className="flex justify-center items-center h-screen">
+            <h1>There was an error retrieving the property info. Please refresh the page and try again.</h1>
+          </div>
+          :
+          <div className="flex flex-col gap-2">
+            <h1 className="text-3xl font-semibold">{data.title}</h1>
+          </div>
+      }
     </div>
   )
 }

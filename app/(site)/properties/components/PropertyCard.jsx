@@ -16,7 +16,7 @@ const PropertyCard = ({ property, setUserWishList, userWishList }) => {
     return (
         <div className="rounded-lg flex flex-col justify-center flex-initial border-secondaryText border-[1px]">
             <Link href={`/properties/${property.id}`} className='h-[200px]'>
-                <Image src={property.images[0] || '/assets/prop-placeholder.png'} alt={property.title} className="rounded-t-lg" width={600} height={200}/>
+                <Image src={property.images[0] || '/assets/prop-placeholder.png'} alt={property.title} className="rounded-t-lg" width={600} height={200} />
             </Link>
             <div className="flex flex-col gap-1 text-white bg-primary p-3 rounded-b-lg">
                 <div className='flex justify-between items-center'>
@@ -47,7 +47,7 @@ const PropertyCard = ({ property, setUserWishList, userWishList }) => {
                 </div>
                 <Link className="text-lg font-semibold" href={`/properties/${property.id}`}>{property.title}</Link>
                 <div className='flex text-secondaryText text-sm gap-1'>
-                    <p>{property.address.description},</p>
+                    <p>{property.address.description}</p>
                     {/* <p>{property.country}</p> */}
                 </div>
                 <div className='flex text-secondaryText text-sm gap-2 border-t border-secondaryText mt-2 py-2 w-full'>
