@@ -43,10 +43,10 @@ const Page = () => {
               <div className='flex-1 flex flex-col justify-center'>
                 <Carousel showArrows={true} showThumbs={false} className='w-fit h-fit'>
                   {/* {data?.images?.map((item) => (
-              <div key={item.id}>
-                <Image src={item.image}/>
-              </div>
-            ))} */}
+                    <div key={item.id}>
+                      <Image src={item.image} />
+                    </div>
+                  ))} */}
                   <div>
                     <Image src="http://dummyimage.com/600x300.png/5fa2dd/ffffff" width={600} height={300} alt='property-image' />
                   </div>
